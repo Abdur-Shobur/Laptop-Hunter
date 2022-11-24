@@ -5,12 +5,54 @@ import logoBlue from '../../media/img/laptop-hunter-blue.png'
 import svg_code from '../../media/img/nav-bg.svg'
 import { UserSystem } from '../../context/FirebaseContext'
 import Login from '../../page/Login/Login'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 function Nav() {
   const { user } = useContext(UserSystem)
-  console.log(user)
-
+  let activeStyle = {
+    textDecoration: 'underline',
+    fontWeight: 'bold',
+    color: '#2563eb',
+  }
+  const nav_menu = (
+    <>
+      <NavLink
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        to="/"
+        className="m-2  text-xl font-bold"
+      >
+        Home
+      </NavLink>
+      <NavLink
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        to="/"
+        className="m-2 text-xl font-bold"
+      >
+        Home
+      </NavLink>
+      <NavLink
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        to="/"
+        className="m-2 text-xl font-bold"
+      >
+        Home
+      </NavLink>
+      <NavLink
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        to="/"
+        className="m-2 text-xl font-bold"
+      >
+        Home
+      </NavLink>
+      <NavLink
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        to="/admin-dashboard"
+        className="m-2 text-xl font-bold"
+      >
+        Dashboard
+      </NavLink>
+    </>
+  )
   return (
     <div
       className="bg-blue-100 shadow-lg"
@@ -35,75 +77,16 @@ function Nav() {
                 />
               </svg>
             </label>
-            <ul
-              tabIndex={0}
-              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li tabIndex={0}>
-                <a className="justify-between">
-                  Parent
-                  <svg
-                    className="fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" />
-                  </svg>
-                </a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+            <ul className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+              {nav_menu}
             </ul>
           </div>
-          <a className="">
+          <Link to="/" className="">
             <img className="w-24" src={logoDark} alt="" />
-          </a>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal p-0">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li tabIndex={0}>
-              <a>
-                Parent
-                <svg
-                  className="fill-current"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" />
-                </svg>
-              </a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+          <ul className="menu menu-horizontal p-0">{nav_menu}</ul>
         </div>
         <div className="navbar-end">
           {user?.uid ? (

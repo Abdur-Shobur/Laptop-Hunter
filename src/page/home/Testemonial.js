@@ -4,6 +4,8 @@ import testmonial_svg from '../../media/img/testmonila-bg.svg'
 import testimoninal_1 from '../../media/img/testimonial/testimoninal-1.webp'
 import testimoninal_2 from '../../media/img/testimonial/testimoninal-2.webp'
 import testimoninal_3 from '../../media/img/testimonial/testimoninal-3.webp'
+import HeaderOne from '../../component/header/HeaderOne'
+import Pragarphone from '../../component/pragraph/Pragarphone'
 function Testemonial() {
   const testmonial_data = [
     {
@@ -39,12 +41,8 @@ function Testemonial() {
       <div className="bg-blue-50/[.8] ">
         <div className="flex justify-center ">
           <div className="flex flex-col justify-center items-center max-w-7xl">
-            <div className="text-3xl text-blue-600 font-bold mt-4 ">
-              Testimonial
-            </div>
-            <div className="text-2xl text-black font-bold mt-2 ">
-              What our Customers Say
-            </div>
+            <HeaderOne>Testimonial</HeaderOne>
+            <Pragarphone>What our Customers Say</Pragarphone>
             <div className="flex flex-col items-center justify-evenly my-12 lg:px-10 lg:flex-row space-y-8 lg:space-y-0 ">
               {testmonial_data.map((e) => (
                 <CardOne key={e.id} testimonial={e} />

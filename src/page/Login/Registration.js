@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import LoginImg from './LoginImg'
 import SigninWith from './SigninWith'
 import { UserSystem } from '../../context/FirebaseContext'
+
 function Registration() {
   const navigate = useNavigate()
   const { create_user_email_and_password, setLoading } = useContext(UserSystem)
@@ -12,10 +13,22 @@ function Registration() {
   const onSubmit = (data) => {
     const email = data.email
     const password = data.password
+    const userdata = {
+      name: data.name,
+      email,
+      password,
+    }
     create_user_email_and_password(email, password)
       .then((user) => {
-        console.log(user)
         setLoading(false)
+        fetch('http://localhost:5000/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(userdata),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data))
+          .catch((err) => console.log(err))
         navigate('/')
       })
       .catch((err) => {

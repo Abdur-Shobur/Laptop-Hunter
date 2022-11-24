@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import LoginImg from './LoginImg'
 import SigninWith from './SigninWith'
 import { UserSystem } from '../../context/FirebaseContext'
+import { toast } from 'react-toastify'
 
 function Login() {
   const navigate = useNavigate()
@@ -17,13 +18,21 @@ function Login() {
     const password = data.password
     signin_user_email_and_password(email, password)
       .then((user) => {
-        console.log(user)
+        toast.success('Login success', {
+          position: 'top-center',
+          draggable: true,
+          autoClose: 2000,
+        })
         navigate('/')
       })
       .catch((err) => {
-        console.log(err)
         setLoading(false)
-        return navigate('/login')
+        toast.error('Login Faild', {
+          position: 'top-center',
+          draggable: true,
+          autoClose: 2000,
+        })
+        navigate('/login')
       })
   }
 
