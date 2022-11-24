@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import AdminLayout from '../layout/AdminLayout'
 import MainLayoutRoutes from '../layout/MainLayout.routes'
-import AddCategory from '../page/AdminDashbord/AddCategory'
+import AddCategory from '../page/AdminDashbord/AddCategoryModal'
 import AdminDashbord from '../page/AdminDashbord/AdminDashbord'
 import AllCategory from '../page/AdminDashbord/AllCategory'
 import AllUsers from '../page/AdminDashbord/AllUsers'
@@ -43,22 +43,12 @@ const routes = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       {
-        path: '/admin-dashboard',
-        element: <AdminDashbord />,
-        children: [
-          {
-            path: 'all-category',
-            element: <AllCategory />,
-          },
-          {
-            path: 'all-users',
-            element: <AllUsers />,
-          },
-        ],
+        path: 'all-category',
+        element: <AllCategory />,
       },
       {
-        path: '*',
-        element: <NotFound />,
+        path: 'all-users',
+        element: <AllUsers />,
       },
     ],
   },

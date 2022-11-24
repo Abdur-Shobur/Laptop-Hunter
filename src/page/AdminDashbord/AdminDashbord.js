@@ -1,6 +1,5 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-
 function AdminDashbord() {
   let activeStyle = {
     textDecoration: 'underline',
@@ -16,10 +15,10 @@ function AdminDashbord() {
         <div className="my-10 ">
           <div className="flex overflow-hidde">
             <div className="hidden md:flex md:flex-shrink-0 ">
-              <div className="flex flex-col w-64">
-                <ul className="flex flex-col round bg-slate-200 rounded-md py-12 gap-1 ">
+              <div className="flex flex-col w-64 bg-blue-100 rounded-md">
+                <ul className="flex flex-col round rounded-md py-12 gap-1 ">
                   <NavLink
-                    to="/admin-dashboard"
+                    to="all-category"
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
@@ -40,7 +39,7 @@ function AdminDashbord() {
               </div>
             </div>
             <div className="flex flex-col flex-1 w-0 overflow-hidden">
-              <main className="relative flex-1 bg-slate-200 rounded-md ml-4 overflow-y-auto focus:outline-none p-4">
+              <main className="relative flex-1 bg-blue-100 rounded-md ml-4 overflow-y-auto focus:outline-none p-4">
                 <Outlet />
               </main>
             </div>
