@@ -24,6 +24,7 @@ function Registration() {
           email,
           password,
           userRole,
+          user_img: '',
         }
         fetch('http://localhost:5000/users', {
           method: 'POST',

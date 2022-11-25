@@ -5,8 +5,7 @@ function AdminDashbord() {
     textDecoration: 'underline',
     fontWeight: 'bold',
     color: 'white',
-    backgroundColor: 'black',
-
+    backgroundColor: '#2563ebe3',
     borderRadius: '5px',
   }
   return (
@@ -16,13 +15,13 @@ function AdminDashbord() {
           <div className="flex overflow-hidde">
             <div className="hidden md:flex md:flex-shrink-0 ">
               <div className="flex flex-col w-64 bg-blue-100 rounded-md">
-                <ul className="flex flex-col round rounded-md py-12 gap-1 ">
+                <ul className="flex flex-col round rounded-md p-3 gap-1 ">
                   <NavLink
                     to="all-category"
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="p-3 bg-slate-300 hover:bg-black hover:text-white rounded-md"
+                    className="p-3 bg-blue-200 shadow my-1 hover:bg-[#2563ebe3] hover:text-white rounded-md"
                   >
                     All Category
                   </NavLink>
@@ -31,7 +30,7 @@ function AdminDashbord() {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="p-3 bg-slate-300 hover:bg-black hover:text-white rounded-md"
+                    className="p-3 bg-blue-200 shadow my-1 hover:bg-[#2563ebe3] hover:text-white rounded-md"
                   >
                     All Laptops
                   </NavLink>
@@ -40,7 +39,7 @@ function AdminDashbord() {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="p-3 bg-slate-300 hover:bg-black hover:text-white rounded-md"
+                    className="p-3 bg-blue-200 shadow my-1 hover:bg-[#2563ebe3] hover:text-white rounded-md"
                   >
                     All Users
                   </NavLink>
@@ -49,7 +48,7 @@ function AdminDashbord() {
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
-                    className="p-3 bg-slate-300 hover:bg-black hover:text-white rounded-md"
+                    className="p-3 bg-blue-200 shadow my-1 hover:bg-[#2563ebe3] hover:text-white rounded-md"
                   >
                     All Sellers
                   </NavLink>

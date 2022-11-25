@@ -74,9 +74,9 @@ function AddLaptop() {
                 }),
               navigate('/seller-dahboard/your-laptops'),
             )
+          e.target.reset()
         }
       })
-    e.target.reset()
   }
   return (
     <div className="lg:w-1/2 mx-auto bg-blue-50 px-8 py-4 rounded-md shadow-lg">
