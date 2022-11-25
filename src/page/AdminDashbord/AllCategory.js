@@ -4,12 +4,11 @@ import LoadCategory from '../../context/LoadCategory'
 import { PuffLoader } from 'react-spinners'
 import { HiPlusSm } from 'react-icons/hi'
 import AddCategoryModal from './AddCategoryModal'
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+
 function AllCategory() {
-  const { category, data, isLoading, refetch } = LoadCategory()
+  const { category, isLoading, refetch } = LoadCategory()
   const [modalOpen, setToClose] = useState(true)
-  // console.log(modalOpen)
+
   refetch(false)
 
   return (

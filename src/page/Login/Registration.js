@@ -1,34 +1,53 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import login_bg from '../../media/img/login-bg.svg'
 import { Link, useNavigate } from 'react-router-dom'
 import LoginImg from './LoginImg'
 import SigninWith from './SigninWith'
 import { UserSystem } from '../../context/FirebaseContext'
+import { toast } from 'react-toastify'
 
 function Registration() {
   const navigate = useNavigate()
+  const [userRole, setUserRole] = useState('user')
   const { create_user_email_and_password, setLoading } = useContext(UserSystem)
   const { register, handleSubmit } = useForm()
   const onSubmit = (data) => {
     const email = data.email
     const password = data.password
-    const userdata = {
-      name: data.name,
-      email,
-      password,
-    }
+
     create_user_email_and_password(email, password)
       .then((user) => {
         setLoading(false)
+        const userdata = {
+          name: data.name,
+          email,
+          password,
+          userRole,
+        }
         fetch('http://localhost:5000/users', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(userdata),
         })
           .then((res) => res.json())
-          .then((data) => console.log(data))
-          .catch((err) => console.log(err))
+          .then((data) => {
+            if (data.acknowledged) {
+              toast.success('Successfuly Create User', {
+                position: 'bottom-left',
+                draggable: true,
+                autoClose: 200,
+              })
+            }
+          })
+          .catch((err) => {
+            toast.error('Can not Create User', {
+              position: 'bottom-left',
+              draggable: true,
+              autoClose: 200,
+            })
+            console.log(err)
+          })
         navigate('/')
       })
       .catch((err) => {
@@ -46,7 +65,10 @@ function Registration() {
             <div className="w-full max-w-xl mx-auto lg:w-96">
               <div>
                 <h2 className="mt-6 text-3xl font-extrabold text-neutral-600">
-                  Registration.
+                  Registration as a{' '}
+                  <span className="underline text-blue-600 capitalize">
+                    {userRole}.
+                  </span>
                 </h2>
               </div>
 
@@ -111,6 +133,24 @@ function Registration() {
                         />
                       </div>
                     </div>
+                    <div className="grid grid-cols-2 gap-2 py-2 my-2 ">
+                      <div
+                        onClick={() => setUserRole('user')}
+                        className={`rounded-md bg-stone-600 py-3 px-2 text-white font-semibold cursor-pointer ${
+                          userRole === 'user' ? '!bg-blue-500' : ''
+                        }`}
+                      >
+                        As a User
+                      </div>
+                      <div
+                        onClick={() => setUserRole('seller')}
+                        className={`rounded-md bg-stone-600 py-3 px-2 text-white font-semibold cursor-pointer ${
+                          userRole === 'seller' ? '!bg-blue-500' : ''
+                        }`}
+                      >
+                        As a Seller
+                      </div>
+                    </div>
 
                     <div className="flex items-center justify-between my-5">
                       <div className="flex items-center">
@@ -142,10 +182,8 @@ function Registration() {
                     <div>
                       <button
                         type="submit"
-                        className="flex items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                      >
-                        Registration
-                      </button>
+                        className="flex capitalize items-center justify-center w-full px-10 py-4 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-blue-600 rounded-xl hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                      >{`Registration as a ${userRole}`}</button>
                     </div>
                   </form>
                   <div className="relative my-4">

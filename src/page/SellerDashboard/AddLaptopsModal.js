@@ -1,8 +1,6 @@
-import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import { UserSystem } from '../../context/FirebaseContext'
-import LoadCategory from '../../context/LoadCategory'
+
 function AddLaptopsModal({ category, user, users_data }) {
   const { register, handleSubmit } = useForm()
   let milliseconds = new Date().getTime()
@@ -18,8 +16,6 @@ function AddLaptopsModal({ category, user, users_data }) {
       .then((res) => res.json())
       .then((result) => {
         if (result.success) {
-          // const brand_id = data.brand.split(' ')[0]
-          // const brand_name = data.brand.split(' ')[1]
           const category_data = {
             laptop_name: data.laptop_name,
             brand_id: data.brand.split(' ')[0],
@@ -34,10 +30,10 @@ function AddLaptopsModal({ category, user, users_data }) {
             user_email: user?.email,
             user_google_uid: user.uid,
             user_verified: false,
-            user_role: '',
+            user_role: users_data.userRole,
             user_name: users_data.name,
             user_db_id: users_data._id,
-            promotion_product: true,
+            promotion_product: false,
             product_added_time: milliseconds,
           }
 
@@ -58,7 +54,13 @@ function AddLaptopsModal({ category, user, users_data }) {
                 })
               }
             })
-            .catch((err) => console.log(err))
+            .catch((err) =>
+              toast.error('Product cant not added', {
+                position: 'top-center',
+                draggable: true,
+                autoClose: 300,
+              }),
+            )
         }
       })
     e.target.reset()

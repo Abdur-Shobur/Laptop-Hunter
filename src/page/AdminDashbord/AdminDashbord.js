@@ -27,6 +27,15 @@ function AdminDashbord() {
                     All Category
                   </NavLink>
                   <NavLink
+                    to="all-laptops"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    className="p-3 bg-slate-300 hover:bg-black hover:text-white rounded-md"
+                  >
+                    All Laptops
+                  </NavLink>
+                  <NavLink
                     to="all-users"
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
@@ -34,6 +43,15 @@ function AdminDashbord() {
                     className="p-3 bg-slate-300 hover:bg-black hover:text-white rounded-md"
                   >
                     All Users
+                  </NavLink>
+                  <NavLink
+                    to="all-sellers"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    className="p-3 bg-slate-300 hover:bg-black hover:text-white rounded-md"
+                  >
+                    All Sellers
                   </NavLink>
                 </ul>
               </div>

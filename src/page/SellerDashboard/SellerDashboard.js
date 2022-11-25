@@ -27,13 +27,13 @@ function SellerDashboard() {
                     Your Laptops
                   </NavLink>
                   <NavLink
-                    to="all-users"
+                    to="add-laptop"
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
                     className="p-3 bg-slate-300 hover:bg-black hover:text-white rounded-md"
                   >
-                    All Users
+                    Add new Laptop
                   </NavLink>
                 </ul>
               </div>
