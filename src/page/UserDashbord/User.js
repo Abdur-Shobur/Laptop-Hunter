@@ -1,22 +1,18 @@
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { UserSystem } from '../../context/FirebaseContext'
+import UsersLoad from '../../context/UsersLoad'
 
 function User() {
-  const [users_data, set_users_data] = useState('')
   const { log_out, user } = useContext(UserSystem)
-  console.log(user)
-
-  const navigate = useNavigate()
   const user_email = user?.email
-  useEffect(() => {
-    fetch(`http://localhost:5000/users-profile/${user_email}`)
-      .then((res) => res.json())
-      .then((data) => set_users_data(data[0]))
-  }, [user_email])
+  const navigate = useNavigate()
+
+  // load user by database
+  const { users_data } = UsersLoad(user_email)
+
+  // logout
   const logout_hendeler = () => {
     log_out()
     toast.success('Successfuly Logout', {

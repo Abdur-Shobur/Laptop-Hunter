@@ -5,7 +5,8 @@ import { toast } from 'react-toastify'
 function AddCategoryModal({ modalOpen, setToClose, refetch }) {
   const { register, handleSubmit } = useForm()
   const navigate = useNavigate()
-  const onSubmit = (data) => {
+
+  const onSubmit = (data, e) => {
     console.log(data)
     const formData = new FormData()
     formData.append('image', data.photo[0])
@@ -42,6 +43,7 @@ function AddCategoryModal({ modalOpen, setToClose, refetch }) {
             .catch((err) => console.log(err))
         }
       })
+    e.target.reset()
     // setToClose(!modalOpen)
   }
   return (

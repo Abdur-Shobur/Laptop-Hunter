@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { FcDeleteDatabase } from 'react-icons/fc'
 import { useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -6,8 +6,15 @@ import swal from 'sweetalert'
 
 function Categorycard({ category, refetch }) {
   const location = useLocation()
+  const [count_porduct, set_count_porudct] = useState(0)
   const [select, setSelected] = useState([])
-  const { _id, category_name } = category
+  const { _id, category_name, category_img } = category
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/laptops/count?id=${_id}`)
+      .then((data) => data.json())
+      .then((result) => set_count_porudct(result))
+  }, [_id])
 
   const seleted_hendaler = (e) => {
     const url = `http://localhost:5000/product-category/${e}`
@@ -51,13 +58,15 @@ function Categorycard({ category, refetch }) {
           <img
             alt="team"
             className="w-16 h-16 bg-gray-100 object-cover object-center border-2 border-blue-100 flex-shrink-0 rounded-full mr-4"
-            src="https://dummyimage.com/80x80"
+            src={category_img}
           />
           <div className="flex-grow">
             <h2 className="text-black title-font font-medium">
               {category_name}
             </h2>
-            <p className="text-gray-700">Total Products {0}</p>
+            <p className="text-gray-700">
+              Total Products {count_porduct.length}
+            </p>
           </div>
         </div>
       </div>

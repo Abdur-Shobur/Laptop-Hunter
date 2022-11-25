@@ -51,6 +51,13 @@ function Nav() {
       >
         Dashboard
       </NavLink>
+      <NavLink
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        to="/seller-dahboard"
+        className="m-2 text-xl font-bold"
+      >
+        Dashboard
+      </NavLink>
     </>
   )
   return (

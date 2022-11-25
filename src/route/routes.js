@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import AdminLayout from '../layout/AdminLayout'
 import MainLayoutRoutes from '../layout/MainLayout.routes'
+import SellerLayout from '../layout/SellerLayout'
 import AddCategory from '../page/AdminDashbord/AddCategoryModal'
 import AdminDashbord from '../page/AdminDashbord/AdminDashbord'
 import AllCategory from '../page/AdminDashbord/AllCategory'
@@ -9,6 +10,7 @@ import Home from '../page/home/Home'
 import Login from '../page/Login/Login'
 import Registration from '../page/Login/Registration'
 import NotFound from '../page/notFound/NotFound'
+import YourLaptop from '../page/SellerDashboard/YourLaptop'
 import User from '../page/UserDashbord/User'
 
 const routes = createBrowserRouter([
@@ -49,6 +51,16 @@ const routes = createBrowserRouter([
       {
         path: 'all-users',
         element: <AllUsers />,
+      },
+    ],
+  },
+  {
+    path: '/seller-dahboard',
+    element: <SellerLayout />,
+    children: [
+      {
+        path: 'your-laptops',
+        element: <YourLaptop />,
       },
     ],
   },
