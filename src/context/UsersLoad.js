@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
 function UsersLoad(email) {
   const user_data_by_emails = () => {
     return axios.get(`http://localhost:5000/users-profile/${email}`)

@@ -25,6 +25,8 @@ function Registration() {
           password,
           userRole,
           user_img: '',
+          user_verified: false,
+          is_active_user: true,
         }
         fetch('http://localhost:5000/users', {
           method: 'POST',

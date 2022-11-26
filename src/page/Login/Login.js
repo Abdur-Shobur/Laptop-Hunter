@@ -21,7 +21,7 @@ function Login() {
         toast.success('Login success', {
           position: 'top-center',
           draggable: true,
-          autoClose: 2000,
+          autoClose: 200,
         })
         navigate('/')
       })
@@ -30,7 +30,7 @@ function Login() {
         toast.error('Login Faild', {
           position: 'top-center',
           draggable: true,
-          autoClose: 2000,
+          autoClose: 200,
         })
         navigate('/login')
       })

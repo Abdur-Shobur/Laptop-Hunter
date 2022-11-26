@@ -1,6 +1,8 @@
 import React from 'react'
 import AllLaptopsLoad from '../../context/AllLaptopsLoad'
 import PropagateLoader from 'react-spinners/PropagateLoader'
+import AllUserLoadByProductID from '../../context/AllUserLoadByProductID'
+import LoadUserbyProductidTable from '../card/SimpleComponet/LoadUserbyProductid.Table'
 
 function AllLaotopTable() {
   const { all_laptops, isLoading } = AllLaptopsLoad()
@@ -44,12 +46,7 @@ function AllLaotopTable() {
                     <td className="px-4 py-3">{e.laptop_name}</td>
                     <td className="px-4 py-3">{e.brand_name}</td>
                     <td className="px-4 py-3">
-                      <div
-                        className="tooltip tooltip-top "
-                        data-tip={e.user_email}
-                      >
-                        <div className="cursor-pointer">{e.user_name}</div>
-                      </div>
+                      <LoadUserbyProductidTable user_db_id={e.user_db_id} />
                     </td>
                     <td className="px-4 py-3">
                       {new Date(e.product_added_time).toLocaleDateString()}

@@ -5,9 +5,11 @@ import logoBlue from '../../media/img/laptop-hunter-blue.png'
 import svg_code from '../../media/img/nav-bg.svg'
 import { UserSystem } from '../../context/FirebaseContext'
 import Login from '../../page/Login/Login'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 
 function Nav() {
+  const location = useLocation()
+  const pathName = location.pathname
   const { user } = useContext(UserSystem)
   let activeStyle = {
     textDecoration: 'underline',
@@ -103,6 +105,13 @@ function Nav() {
                   <span className="text-sm">Profile</span>
                 </div>
               </div>
+            </Link>
+          ) : pathName === '/login' ? (
+            <Link
+              to="/registration"
+              className="btn btn-sm bg-blue-500 border-none hover:bg-blue-600"
+            >
+              Registration
             </Link>
           ) : (
             <Link
