@@ -16,23 +16,46 @@ function Login() {
   const onSubmit = (data) => {
     const email = data.email
     const password = data.password
-    signin_user_email_and_password(email, password)
-      .then((user) => {
-        toast.success('Login success', {
-          position: 'top-center',
-          draggable: true,
-          autoClose: 200,
-        })
-        navigate('/')
+    fetch(`http://localhost:5000/user-valid?email=${email}`)
+      .then((r) => r.json())
+      .then((res) => {
+        console.log(res)
+        if (email === res.email) {
+          signin_user_email_and_password(email, password)
+            .then((user) => {
+              toast.success('Login success', {
+                position: 'top-center',
+                draggable: true,
+                autoClose: 200,
+              })
+              navigate('/')
+            })
+            .catch((err) => {
+              setLoading(false)
+              toast.error('Login Faild', {
+                position: 'top-center',
+                draggable: true,
+                autoClose: 200,
+              })
+              navigate('/login')
+            })
+        } else {
+          setLoading(false)
+          toast.error('User didnot Found Register Please', {
+            position: 'top-center',
+            draggable: true,
+            autoClose: 500,
+          })
+          navigate('/registration')
+        }
       })
       .catch((err) => {
-        setLoading(false)
+        navigate('/registration')
         toast.error('Login Faild', {
           position: 'top-center',
           draggable: true,
           autoClose: 200,
         })
-        navigate('/login')
       })
   }
 

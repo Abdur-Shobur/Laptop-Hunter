@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { FcDeleteDatabase } from 'react-icons/fc'
+import { MdDeleteForever } from 'react-icons/md'
 import { useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import swal from 'sweetalert'
-
+import './Card.css'
 function Categorycard({ category, refetch }) {
   const location = useLocation()
   const [count_porduct, set_count_porudct] = useState(0)
@@ -45,11 +45,11 @@ function Categorycard({ category, refetch }) {
 
   return (
     <>
-      <div className="p-2 lg:w-1/3 md:w-1/2 w-full cursor-pointer relative">
+      <div className="p-2 lg:w-1/3 md:w-1/2 w-full cursor-pointer relative  category_hide">
         {location.pathname === '/admin-dashboard/all-category' && (
-          <div className=" absolute right-4">
-            <FcDeleteDatabase
-              className="text-4xl text-red-500 hover:text-red-600"
+          <div className=" absolute right-2">
+            <MdDeleteForever
+              className="text-3xl text-red-500 hover:text-red-600 hidden show_icons_hov"
               onClick={() => seleted_hendaler(_id)}
             />
           </div>

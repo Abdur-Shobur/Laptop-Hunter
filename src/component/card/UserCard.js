@@ -40,7 +40,38 @@ function UserCard({ users, sr }) {
 
   // delte user by update
   const handel_delete = (e) => {
-    console.log(e)
+    swal({
+      title: 'Are you sure?',
+      text: 'Once You Delete user You Never be Resote',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(`http://localhost:5000/users?id=${e}`, {
+          method: 'DELETE',
+        })
+          .then((r) => r.json())
+          .then((res) => {
+            if (res.deletedCount > 0) {
+              swal('Good! User Sucessfully Deleted!', {
+                icon: 'success',
+              }).then((r) =>
+                toast.success('Deleted Account!', {
+                  position: 'top-right',
+                  autoClose: 200,
+                }),
+              )
+            }
+          })
+          .catch((err) => {
+            toast.error('User Delete Failed!', {
+              position: 'top-center',
+              autoClose: 200,
+            })
+          })
+      }
+    })
   }
 
   return (

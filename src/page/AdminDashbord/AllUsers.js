@@ -22,25 +22,25 @@ function AllUsers() {
                 <PuffLoader color="#36b0d6" />
               </div>
             ) : (
-              <table class="table-auto w-full text-left whitespace-no-wrap">
+              <table className="table-auto w-full text-left whitespace-no-wrap">
                 <thead>
                   <tr>
-                    <th class="px-4 py-3 w-10  title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
+                    <th className="px-4 py-3 w-10  title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">
                       Sr.
                     </th>
-                    <th class="px-4 py-3 w-32 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                    <th className="px-4 py-3 w-32 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                       Photo
                     </th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                    <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                       Name
                     </th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                    <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                       Email
                     </th>
-                    <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                    <th className="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                       Action
                     </th>
-                    <th class="px-4 py-3 w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br">
+                    <th className="px-4 py-3 w-10 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tr rounded-br">
                       Verified
                     </th>
                   </tr>

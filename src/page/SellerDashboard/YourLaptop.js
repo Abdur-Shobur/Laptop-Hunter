@@ -6,7 +6,9 @@ import AllLaptopLoad from '../../context/AllLaptopLoad'
 
 function YourLaptop() {
   const { user } = useContext(UserSystem)
-  const { laptops, isLoading: laptops_loading } = AllLaptopLoad(user?.email)
+  const { laptops, isLoading: laptops_loading, refetch } = AllLaptopLoad(
+    user?.email,
+  )
 
   return (
     <div>
@@ -15,7 +17,7 @@ function YourLaptop() {
       </div>
       <div className="flex flex-wrap -m-2">
         {laptops?.map((e) => (
-          <ProductsCard key={e._id} laptops={e} />
+          <ProductsCard key={e._id} laptops={e} refetch={refetch} />
         ))}
       </div>
     </div>

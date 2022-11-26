@@ -43,7 +43,6 @@ function AddLaptop() {
             promotion_product: false,
             product_added_time: milliseconds,
           }
-          console.log(category_data, 'category data')
           fetch(`http://localhost:5000/laptops`, {
             method: 'POST',
             headers: {

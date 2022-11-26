@@ -1,12 +1,41 @@
 import React from 'react'
 import AllLaptopsLoad from '../../context/AllLaptopsLoad'
 import PropagateLoader from 'react-spinners/PropagateLoader'
-import AllUserLoadByProductID from '../../context/AllUserLoadByProductID'
 import LoadUserbyProductidTable from '../card/SimpleComponet/LoadUserbyProductid.Table'
+import DeleteLaptops from '../../context/DeleteLaptops'
+import swal from 'sweetalert'
 
 function AllLaotopTable() {
-  const { all_laptops, isLoading } = AllLaptopsLoad()
+  const { all_laptops, isLoading, refetch } = AllLaptopsLoad()
+  const { delete_func } = DeleteLaptops()
 
+  // delete laptop
+  const delete_laptop_handeler = (e) => {
+    swal({
+      title: 'Are you sure?',
+      text:
+        'Once deleted, you will not be able to recover this imaginary file!',
+      icon: 'warning',
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        delete_func(e)
+          .then((r) => r.json(r))
+          .then((r) => {
+            refetch()
+            if (r.deletedCount > 0) {
+              swal('Poof! Your imaginary file has been deleted!', {
+                icon: 'success',
+              })
+            }
+          })
+          .catch((er) => console.log(er))
+      } else {
+        swal('Your imaginary file is safe!')
+      }
+    })
+  }
   return (
     <div>
       <section className="text-gray-600 body-font">
@@ -57,7 +86,10 @@ function AllLaotopTable() {
                           className="tooltip tooltip-top tooltip-error"
                           data-tip="Delete"
                         >
-                          <button className="btn btn-xs bg-red-600 border-none hover:bg-red-500">
+                          <button
+                            onClick={() => delete_laptop_handeler(e._id)}
+                            className="btn btn-xs bg-red-600 border-none hover:bg-red-500"
+                          >
                             Del
                           </button>
                         </div>
