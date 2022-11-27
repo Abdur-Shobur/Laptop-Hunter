@@ -14,12 +14,12 @@ function AllSellers() {
               Our all sellers
             </h2>
           </div>
-          <div className="flex justify-center">
-            {isLoading && <PuffLoader color="#36b0d6" />}
-          </div>
+
           <div>
             {isLoading ? (
-              <PuffLoader color="#36b0d6" />
+              <div className="flex justify-center">
+                {isLoading && <PuffLoader color="#36b0d6" />}
+              </div>
             ) : (
               <table className="table-auto w-full text-left whitespace-no-wrap">
                 <thead>

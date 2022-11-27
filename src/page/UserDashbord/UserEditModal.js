@@ -35,7 +35,6 @@ function UserEditModal({ users_data, refetch }) {
           })
             .then((res) => res.json())
             .then((r) => {
-              console.log(r)
               toast.success('Update Success', {
                 position: 'top-center',
                 autoClose: 200,

@@ -52,6 +52,15 @@ function AdminDashbord() {
                   >
                     All Sellers
                   </NavLink>
+                  <NavLink
+                    to="reported-items"
+                    style={({ isActive }) =>
+                      isActive ? activeStyle : undefined
+                    }
+                    className="p-3 bg-blue-200 shadow my-1 hover:bg-[#2563ebe3] hover:text-white rounded-md"
+                  >
+                    Reported Items
+                  </NavLink>
                 </ul>
               </div>
             </div>

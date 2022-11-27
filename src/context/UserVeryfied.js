@@ -5,7 +5,7 @@ function UserVeryfied(e) {
     user_verified: true,
     user_id: e,
   }
-  console.log(all_data)
+
   const UserVeryfied_byid = () => {
     return axios.put(`http://localhost:5000/users/veryfy`, {
       method: 'PUT',

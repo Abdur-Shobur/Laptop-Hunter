@@ -48,12 +48,10 @@ function Registration() {
               draggable: true,
               autoClose: 200,
             })
-            console.log(err)
           })
         navigate('/')
       })
       .catch((err) => {
-        console.log(err)
         setLoading(false)
         navigate('/registration')
       })

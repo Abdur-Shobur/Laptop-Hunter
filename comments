@@ -1,0 +1,33 @@
+//pormotion kora hoysa laptop e update hobe new ar ekta te insert hobe 
+//
+//const promote_now_handeler = (e) => {
+//     const all_data = {
+//       promotion_product: true,
+//       laptop_id: e,
+//     }
+//     fetch(`http://localhost:5000/laptops/promotion-product/v1?laptop_id=${e}`, {
+//       method: 'PUT',
+//       headers: {
+//         'Content-type': 'application/json',
+//       },
+//       body: JSON.stringify(all_data),
+//     })
+//       .then((r) => r.json())
+//       .then((r) => {
+//         refetch().then((nex) => {
+//           if (r.acknowledged) {
+//             fetch(`http://localhost:5000/promote-laptops/v1`, {
+//               method: 'POST',
+//               headers: {
+//                 'Content-Type': 'application/json',
+//               },
+//               body: JSON.stringify(laptops),
+//             })
+//               .then((r) => r.json())
+//               .then((r) => console.log(r))
+//               .catch((er) => console.log(er))
+//           }
+//         })
+//       })
+//       .catch((er) => console.log(er))
+//   }

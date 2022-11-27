@@ -16,10 +16,9 @@ function Login() {
   const onSubmit = (data) => {
     const email = data.email
     const password = data.password
-    fetch(`http://localhost:5000/user-valid?email=${email}`)
+    fetch(`http://localhost:5000/user-get-by-email/v1?email=${email}`)
       .then((r) => r.json())
       .then((res) => {
-        console.log(res)
         if (email === res.email) {
           signin_user_email_and_password(email, password)
             .then((user) => {

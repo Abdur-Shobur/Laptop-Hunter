@@ -7,7 +7,6 @@ function AddCategoryModal({ modalOpen, setToClose, refetch }) {
   const navigate = useNavigate()
 
   const onSubmit = (data, e) => {
-    console.log(data)
     const formData = new FormData()
     formData.append('image', data.photo[0])
 
@@ -44,7 +43,7 @@ function AddCategoryModal({ modalOpen, setToClose, refetch }) {
         }
       })
     e.target.reset()
-    // setToClose(!modalOpen)
+    
   }
   return (
     <div>

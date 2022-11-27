@@ -27,10 +27,10 @@ function Nav() {
       </NavLink>
       <NavLink
         style={({ isActive }) => (isActive ? activeStyle : undefined)}
-        to="/"
+        to="/shop"
         className="m-2 text-xl font-bold"
       >
-        Home
+        Shop
       </NavLink>
       <NavLink
         style={({ isActive }) => (isActive ? activeStyle : undefined)}
@@ -51,14 +51,21 @@ function Nav() {
         to="/admin-dashboard"
         className="m-2 text-xl font-bold"
       >
-        Dashboard
+        Dashboard Admin
       </NavLink>
       <NavLink
         style={({ isActive }) => (isActive ? activeStyle : undefined)}
         to="/seller-dahboard"
         className="m-2 text-xl font-bold"
       >
-        Dashboard
+        Dashboard Seller
+      </NavLink>
+      <NavLink
+        style={({ isActive }) => (isActive ? activeStyle : undefined)}
+        to="/buyer-dashboard"
+        className="m-2 text-xl font-bold"
+      >
+        Dashboard Buyer
       </NavLink>
     </>
   )

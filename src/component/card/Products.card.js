@@ -21,7 +21,6 @@ function ProductsCard({ laptops, refetch }) {
         delete_func(e)
           .then((r) => r.json())
           .then((res) => {
-            console.log(res, 'ers-24')
             refetch()
             if (res.deletedCount > 0) {
               toast.success('Delete Success!', {

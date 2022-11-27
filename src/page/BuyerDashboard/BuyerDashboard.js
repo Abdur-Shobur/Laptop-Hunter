@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
-function SellerDashboard() {
+function BuyerDashboard() {
   let activeStyle = {
     textDecoration: 'underline',
     fontWeight: 'bold',
@@ -17,31 +17,22 @@ function SellerDashboard() {
               <div className="flex flex-col w-64 bg-blue-100 rounded-md">
                 <ul className="flex flex-col round rounded-md p-3 gap-1 ">
                   <NavLink
-                    to="your-laptops"
+                    to="my-orders"
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
                     className="p-3 bg-blue-200 shadow my-1 hover:bg-[#2563ebe3] hover:text-white rounded-md"
                   >
-                    Your Laptops
+                    My Order
                   </NavLink>
                   <NavLink
-                    to="add-laptop"
+                    to="my-wishlists"
                     style={({ isActive }) =>
                       isActive ? activeStyle : undefined
                     }
                     className="p-3 bg-blue-200 shadow my-1 hover:bg-[#2563ebe3] hover:text-white rounded-md"
                   >
-                    Add new Laptop
-                  </NavLink>
-                  <NavLink
-                    to="my-buyer"
-                    style={({ isActive }) =>
-                      isActive ? activeStyle : undefined
-                    }
-                    className="p-3 bg-blue-200 shadow my-1 hover:bg-[#2563ebe3] hover:text-white rounded-md"
-                  >
-                    My Buyer
+                    My Wish Lists
                   </NavLink>
                 </ul>
               </div>
@@ -58,4 +49,4 @@ function SellerDashboard() {
   )
 }
 
-export default SellerDashboard
+export default BuyerDashboard
