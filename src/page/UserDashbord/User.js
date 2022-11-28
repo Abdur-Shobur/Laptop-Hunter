@@ -6,7 +6,7 @@ import UsersLoad from '../../context/UsersLoad'
 import UserEditModal from './UserEditModal'
 
 function User() {
-  const { log_out, user } = useContext(UserSystem)
+  const { log_out, user, set_db_user } = useContext(UserSystem)
   const user_email = user?.email
 
   const navigate = useNavigate()
@@ -17,12 +17,17 @@ function User() {
   // logout
   const logout_hendeler = () => {
     log_out()
-    toast.success('Successfuly Logout', {
-      position: 'bottom-right',
-      draggable: true,
-      autoClose: 200,
-    })
-    navigate('/')
+      .then(() => {
+        set_db_user(null)
+        refetch()
+        toast.success('Successfuly Logout', {
+          position: 'top-right',
+          draggable: true,
+          autoClose: 200,
+        })
+        navigate('/')
+      })
+      .catch((er) => console.log(er))
   }
 
   return (

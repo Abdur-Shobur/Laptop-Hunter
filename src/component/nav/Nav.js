@@ -10,13 +10,14 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 function Nav() {
   const location = useLocation()
   const pathName = location.pathname
-  const { user } = useContext(UserSystem)
+  const { user, db_user } = useContext(UserSystem)
 
   let activeStyle = {
     textDecoration: 'underline',
     fontWeight: 'bold',
     color: '#2563eb',
   }
+
   const nav_menu = (
     <>
       <NavLink
@@ -41,27 +42,35 @@ function Nav() {
       >
         Blog
       </NavLink>
-      <NavLink
-        style={({ isActive }) => (isActive ? activeStyle : undefined)}
-        to="/admin-dashboard"
-        className="m-2 text-xl font-bold"
-      >
-        Dashboard Admin
-      </NavLink>
-      <NavLink
-        style={({ isActive }) => (isActive ? activeStyle : undefined)}
-        to="/seller-dahboard"
-        className="m-2 text-xl font-bold"
-      >
-        Dashboard Seller
-      </NavLink>
-      <NavLink
-        style={({ isActive }) => (isActive ? activeStyle : undefined)}
-        to="/buyer-dashboard"
-        className="m-2 text-xl font-bold"
-      >
-        Dashboard Buyer
-      </NavLink>
+
+      {db_user?.userRole === 'admin' && (
+        <NavLink
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          to="/admin-dashboard"
+          className="m-2 text-xl font-bold"
+        >
+          Admin Dashboard
+        </NavLink>
+      )}
+
+      {db_user?.userRole === 'seller' && (
+        <NavLink
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          to="/seller-dahboard"
+          className="m-2 text-xl font-bold"
+        >
+          Seller Dashboard
+        </NavLink>
+      )}
+      {db_user?.userRole === 'user' && (
+        <NavLink
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          to="/buyer-dashboard"
+          className="m-2 text-xl font-bold"
+        >
+          User Dashboard
+        </NavLink>
+      )}
     </>
   )
   return (

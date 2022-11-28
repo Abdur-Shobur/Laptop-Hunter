@@ -88,6 +88,7 @@ function FirebaseContext({ children }) {
     signin_user_email_and_password,
     sign_in_google_pop_up,
     db_user,
+    set_db_user,
     log_out,
   }
   return <UserSystem.Provider value={value}>{children}</UserSystem.Provider>

@@ -1,17 +1,18 @@
 import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
 import login_bg from '../../media/img/login-bg.svg'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import LoginImg from './LoginImg'
 import SigninWith from './SigninWith'
 import { UserSystem } from '../../context/FirebaseContext'
 import { toast } from 'react-toastify'
 
 function Login() {
+  const location = useLocation()
   const navigate = useNavigate()
-  const { signin_user_email_and_password, loading, setLoading } = useContext(
-    UserSystem,
-  )
+  const from = location?.state?.from?.pathname || '/'
+
+  const { signin_user_email_and_password, setLoading } = useContext(UserSystem)
   const { register, handleSubmit } = useForm()
   const onSubmit = (data) => {
     const email = data.email
@@ -27,7 +28,8 @@ function Login() {
                 draggable: true,
                 autoClose: 200,
               })
-              navigate('/')
+              navigate(from, { replace: true })
+              setLoading(false)
             })
             .catch((err) => {
               setLoading(false)
