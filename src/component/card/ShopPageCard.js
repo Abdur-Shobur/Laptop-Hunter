@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import AllUserLoadByProductID from '../../context/AllUserLoadByProductID'
 
 import { GoUnverified, GoVerified } from 'react-icons/go'
@@ -7,7 +7,6 @@ import { toast } from 'react-toastify'
 function ShopPageCard({ laptop, book_handeler }) {
   const [reported_id, set_reported_id] = useState([])
   const {
-    _id,
     brand_name,
     laptop_name,
     laptop_photo,
@@ -16,16 +15,11 @@ function ShopPageCard({ laptop, book_handeler }) {
     condition,
     product_added_time,
     used_year,
-    user_email,
-    laptop_description,
-    location,
-    promotion_product,
     user_db_id,
   } = laptop
 
   const { all_users } = AllUserLoadByProductID(user_db_id)
   const seller_info = all_users?.[0]
-
   const report_to_admin = async (e) => {
     await fetch(
       `http://localhost:5000/get-reported-laptop-by-id/v1?id=${e._id}`,
@@ -38,7 +32,7 @@ function ShopPageCard({ laptop, book_handeler }) {
       })
       .catch((er) => console.log(er))
 
-    if (reported_id.length === 0) {
+    if (reported_id.length <= 0) {
       fetch(`http://localhost:5000/reported-laptop/v1`, {
         method: 'POST',
         headers: {
@@ -58,42 +52,12 @@ function ShopPageCard({ laptop, book_handeler }) {
         })
         .catch((er) => {})
     } else {
-      if (reported_id[0]._id === e._id) {
-        return toast.error('Sorry! This Laptop Allready Roported to Admin!', {
-          position: 'top-center',
-          autoClose: 300,
-          draggable: true,
-        })
-      }
+      return toast.error('Sorry! This Laptop Allready Roported to Admin!', {
+        position: 'top-center',
+        autoClose: 300,
+        draggable: true,
+      })
     }
-
-    // if (reported_id.length <= 0) {
-    //   return toast.success('Sorry! This Laptop Allready Added!', {
-    //     position: 'top-center',
-    //     autoClose: 300,
-    //     draggable: true,
-    //   })
-    // }
-    // fetch(`http://localhost:5000/reported-laptop/v1`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(e),
-    // })
-    //   .then((r) => r.json())
-    //   .then((res) => {
-    //     if (res.acknowledged) {
-    //       toast.success('Reported to admin success', {
-    //         position: 'top-center',
-    //         autoClose: 300,
-    //         draggable: true,
-    //       })
-    //     }
-    //   })
-    //   .catch((er) => {
-    //
-    //   })
   }
 
   return (

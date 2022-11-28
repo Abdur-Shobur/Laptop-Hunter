@@ -1,5 +1,4 @@
 import React from 'react'
-import AllLaotopTable from '../../component/table/AllLaotopTable'
 import ReportedTable from '../../component/table/ReportedTable'
 
 function RepotedItems() {

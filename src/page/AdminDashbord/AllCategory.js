@@ -30,7 +30,7 @@ function AllCategory() {
       <div className="flex justify-center">
         {isLoading && <PuffLoader color="#105bdb" />}
       </div>
-      <div className=" grid grid-cols-5">
+      <div className=" grid grid-cols-2 md:grid-cols-3 gap-2">
         {category?.map((e) => (
           <Categorycard key={e._id} category={e} refetch={refetch} />
         ))}

@@ -9,7 +9,7 @@ import UsersLoad from '../../context/UsersLoad'
 function AddLaptop() {
   const navigate = useNavigate()
   const { user } = useContext(UserSystem)
-  const { category, isLoading, refetch } = LoadCategory()
+  const { category } = LoadCategory()
   const { users_data } = UsersLoad(user?.email)
 
   const { register, handleSubmit } = useForm()

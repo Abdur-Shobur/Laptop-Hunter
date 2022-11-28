@@ -15,7 +15,7 @@ function AllSellers() {
             </h2>
           </div>
 
-          <div>
+          <div className="overflow-x-auto">
             {isLoading ? (
               <div className="flex justify-center">
                 {isLoading && <PuffLoader color="#36b0d6" />}

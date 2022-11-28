@@ -15,10 +15,10 @@ function MyBuyersTableRow({ booked_porduct, i }) {
 
   useEffect(() => {
     if (booking_user) {
-      set_booking_set_user(all_users[0])
+      set_booking_set_user(all_users?.[0])
     }
   }, [booking_user, all_users])
-  // console.log(booking_get_user, 'sda')
+
   return (
     <tr>
       <td className="px-4 py-3">{i + 1}</td>

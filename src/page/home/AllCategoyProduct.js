@@ -19,7 +19,7 @@ function AllCategoyProduct() {
         <div className="flex justify-center">
           {isLoading && <PuffLoader color="#105bdb" />}
         </div>
-        <div className="grid grid-cols-5">
+        <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 allcategory_products_custom_css">
           {category?.map((e) => (
             <Categorycard key={e._id} category={e} />
           ))}

@@ -142,7 +142,7 @@ function SigninWith() {
             d="M48 48L17 24l-4-3 35-10z"
           ></path>
         </svg>
-        <span className="ml-4"> Log in with Google</span>
+        <span className="ml-4"> Log in with Google As a User</span>
       </div>
     </button>
   )

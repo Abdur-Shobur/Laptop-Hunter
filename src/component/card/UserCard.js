@@ -96,7 +96,12 @@ function UserCard({ users, sr }) {
           <button>{users.name}</button>
         </div>
       </td>
-      <td className="px-4 py-3 text-lg text-gray-900">{users.email}</td>
+      <td className="px-4 py-3 text-lg text-gray-900">
+        <span className="hidden lg:inline-block">{users.email}</span>
+        <div className="tooltip" data-tip={users.email}>
+          <span className="lg:hidden">{users.email.slice(0, 10)}...</span>
+        </div>
+      </td>
       <td className="px-4 py-3 text-lg text-gray-900">
         <div className="tooltip" data-tip={`Delete ${users.userRole}`}>
           <button

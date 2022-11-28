@@ -46,7 +46,7 @@ function Categorycard({ category, refetch }) {
   return (
     <Link
       to={`/shop/category-details/${_id}`}
-      className="p-2 w-full cursor-pointer relative  category_hide"
+      className="w-full cursor-pointer relative category_hide"
     >
       {location.pathname === '/admin-dashboard/all-category' && (
         <div className=" absolute right-2">
@@ -56,10 +56,10 @@ function Categorycard({ category, refetch }) {
           />
         </div>
       )}
-      <div className="h-full flex items-center bg-[#81C6E8] hover:bg-[#4eb9ef] transition-all border-blue-300 shadow-md border p-4 rounded-lg">
+      <div className="flex h-full gap-1 justify-center items-center bg-[#81C6E8] hover:bg-[#4eb9ef] transition-all border-blue-300 shadow-md border p-4 rounded-lg category_card_custom_css">
         <img
           alt="team"
-          className="w-16 h-16 bg-gray-100 object-cover object-center border-2 border-blue-100 flex-shrink-0 rounded-full mr-4"
+          className="w-16 h-16 bg-gray-100 object-cover object-center border-2 border-blue-100 flex-shrink-0 rounded-full lg:mr-4"
           src={category_img}
         />
         <div className="flex-grow">

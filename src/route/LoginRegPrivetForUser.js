@@ -14,7 +14,7 @@ function LoginRegPrivetForUser({ children }) {
     )
   }
 
-  if (!user && !user.uid) {
+  if (!user && !user?.uid) {
     return children
   }
   return <Navigate to="/" />

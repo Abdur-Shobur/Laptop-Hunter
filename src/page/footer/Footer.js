@@ -4,8 +4,8 @@ import logoDark from '../../media/img/laptop-hunter-logo-dark.png'
 import logoBlue from '../../media/img/laptop-hunter-blue.png'
 function Footer() {
   return (
-    <div className="bg-blue-700 !text-white">
-      <footer className="footer py-10 container mx-auto">
+    <div className="bg-blue-900 !text-white">
+      <footer className="footer py-10 px-5 container mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
         <div>
           <img src={logoBlue} className="w-36" alt="" />
           <p>

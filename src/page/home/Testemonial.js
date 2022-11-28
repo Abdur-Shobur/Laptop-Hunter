@@ -43,7 +43,7 @@ function Testemonial() {
           <div className="flex flex-col justify-center items-center max-w-7xl">
             <HeaderOne>Testimonial</HeaderOne>
             <Pragarphone>What our Customers Say</Pragarphone>
-            <div className="flex flex-col items-center justify-evenly my-12 lg:px-10 lg:flex-row space-y-8 lg:space-y-0 ">
+            <div className="flex flex-col items-center justify-evenly my-12 md:px-10 md:flex-row space-y-8 lg:space-y-0 ">
               {testmonial_data.map((e) => (
                 <CardOne key={e.id} testimonial={e} />
               ))}

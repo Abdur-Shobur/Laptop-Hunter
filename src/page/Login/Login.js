@@ -6,6 +6,7 @@ import LoginImg from './LoginImg'
 import SigninWith from './SigninWith'
 import { UserSystem } from '../../context/FirebaseContext'
 import { toast } from 'react-toastify'
+import { Helmet } from 'react-helmet'
 
 function Login() {
   const location = useLocation()
@@ -62,7 +63,10 @@ function Login() {
 
   return (
     <div style={{ backgroundImage: `url(${login_bg})` }}>
-      <section className=" overflow-hidden container mx-auto py-36">
+      <Helmet>
+        <title>Login </title>
+      </Helmet>
+      <section className=" overflow-hidden container mx-auto py-36 px-2">
         <div className="flex min- overflow-hidden">
           <LoginImg />
           <div className="flex flex-col justify-center flex-1 px-4 py-12 overflow-hidden sm:px-6 lg:flex-none lg:px-20 xl:px-24 bg-white shadow-2xl border-blue-300 border-4 rounded-xl">
@@ -117,7 +121,7 @@ function Login() {
                       </div>
                     </div>
 
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between flex-col sm:flex-row gap-2">
                       <div className="flex items-center">
                         <input
                           id="remember-me"
