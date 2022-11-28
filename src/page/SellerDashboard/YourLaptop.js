@@ -10,7 +10,7 @@ function YourLaptop() {
   const { laptops, isLoading: laptops_loading, refetch } = AllLaptopLoad(
     user?.email,
   )
-
+  refetch()
   return (
     <div>
       <div className="flex justify-center">

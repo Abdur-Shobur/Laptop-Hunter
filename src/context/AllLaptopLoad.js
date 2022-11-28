@@ -10,7 +10,7 @@ function AllLaptopLoad(e) {
   const { data, isLoading, refetch } = useQuery(
     ['laptops-category', e],
     data_fetch,
-    { refetchOnWindowFocus: false },
+    { refetchOnWindowFocus: true },
   )
   const laptops = data?.data
 
