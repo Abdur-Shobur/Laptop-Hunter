@@ -23,10 +23,7 @@ function PromotionProductCard({ promote_laptops, book_handeler }) {
   const user_verified = all_users?.[0]?.user_verified
   return (
     <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
-      <div
-        href="a"
-        className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg  "
-      >
+      <div className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg  ">
         <div className="relative pb-48 overflow-hidden">
           <img
             className="absolute inset-0 h-full w-full object-cover"

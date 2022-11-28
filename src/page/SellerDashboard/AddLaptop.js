@@ -42,6 +42,7 @@ function AddLaptop() {
             user_db_id: users_data._id,
             promotion_product: false,
             product_added_time: milliseconds,
+            reported_item: false,
           }
           fetch(`http://localhost:5000/laptops`, {
             method: 'POST',

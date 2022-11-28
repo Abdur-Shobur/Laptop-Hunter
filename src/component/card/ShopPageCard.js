@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import AllUserLoadByProductID from '../../context/AllUserLoadByProductID'
 
 import { GoUnverified, GoVerified } from 'react-icons/go'
+import { toast } from 'react-toastify'
 
 function ShopPageCard({ laptop, book_handeler }) {
+  const [reported_id, set_reported_id] = useState([])
   const {
     _id,
     brand_name,
@@ -24,6 +26,76 @@ function ShopPageCard({ laptop, book_handeler }) {
   const { all_users } = AllUserLoadByProductID(user_db_id)
   const seller_info = all_users?.[0]
 
+  const report_to_admin = async (e) => {
+    await fetch(
+      `http://localhost:5000/get-reported-laptop-by-id/v1?id=${e._id}`,
+    )
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.length > 0) {
+          set_reported_id(data)
+        }
+      })
+      .catch((er) => console.log(er))
+
+    if (reported_id.length === 0) {
+      fetch(`http://localhost:5000/reported-laptop/v1`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(e),
+      })
+        .then((r) => r.json())
+        .then((res) => {
+          if (res.acknowledged) {
+            toast.success('Reported to admin success', {
+              position: 'top-center',
+              autoClose: 300,
+              draggable: true,
+            })
+          }
+        })
+        .catch((er) => {})
+    } else {
+      if (reported_id[0]._id === e._id) {
+        return toast.error('Sorry! This Laptop Allready Roported to Admin!', {
+          position: 'top-center',
+          autoClose: 300,
+          draggable: true,
+        })
+      }
+    }
+
+    // if (reported_id.length <= 0) {
+    //   return toast.success('Sorry! This Laptop Allready Added!', {
+    //     position: 'top-center',
+    //     autoClose: 300,
+    //     draggable: true,
+    //   })
+    // }
+    // fetch(`http://localhost:5000/reported-laptop/v1`, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(e),
+    // })
+    //   .then((r) => r.json())
+    //   .then((res) => {
+    //     if (res.acknowledged) {
+    //       toast.success('Reported to admin success', {
+    //         position: 'top-center',
+    //         autoClose: 300,
+    //         draggable: true,
+    //       })
+    //     }
+    //   })
+    //   .catch((er) => {
+    //
+    //   })
+  }
+
   return (
     <div className=" w-full py-6 px-3">
       <div className="bg-white shadow-xl rounded-lg  ">
@@ -33,17 +105,34 @@ function ShopPageCard({ laptop, book_handeler }) {
             backgroundImage: `url(${laptop_photo})`,
           }}
         >
-          <div className="flex justify-end ">
+          <div className="flex items-end gap-1 flex-col">
             <div
               className="tooltip tooltip-warning"
               data-tip="Add to Wish list"
             >
               <svg
-                className="h-6 w-6 fill-current rounded-full p-1 text-red-600 bg-yellow-300 hover:h-7 hover:w-7 transition-all cursor-pointer"
+                className="h-6 w-6 fill-current rounded-full p-1 text-white bg-teal-500 hover:h-7 hover:w-7 transition-all cursor-not-allowed"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
               >
                 <path d="M12.76 3.76a6 6 0 0 1 8.48 8.48l-8.53 8.54a1 1 0 0 1-1.42 0l-8.53-8.54a6 6 0 0 1 8.48-8.48l.76.75.76-.75zm7.07 7.07a4 4 0 1 0-5.66-5.66l-1.46 1.47a1 1 0 0 1-1.42 0L9.83 5.17a4 4 0 1 0-5.66 5.66L12 18.66l7.83-7.83z"></path>
+              </svg>
+            </div>
+            <div className="tooltip tooltip-error" data-tip="Report To Admin">
+              <svg
+                onClick={() => report_to_admin(laptop)}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="h-6 w-6 rounded-full p-1 text-white bg-rose-700 hover:h-7 hover:w-7 transition-all cursor-pointer"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"
+                />
               </svg>
             </div>
           </div>
