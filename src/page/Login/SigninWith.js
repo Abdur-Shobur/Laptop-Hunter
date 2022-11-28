@@ -1,11 +1,15 @@
 import React, { useContext } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { UserSystem } from '../../context/FirebaseContext'
 
 function SigninWith() {
-  const { user, sign_in_google_pop_up, loading, setLoading } = useContext(
-    UserSystem,
-  )
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location?.state?.from?.pathname || '/'
+
+  const { sign_in_google_pop_up, setLoading } = useContext(UserSystem)
+  // google sing in by pop up
   const google_sign_in_handeler = () => {
     sign_in_google_pop_up()
       .then((user) => {
@@ -38,19 +42,23 @@ function SigninWith() {
                   .then((res) => res.json())
                   .then((data) => {
                     if (data.acknowledged) {
+                      navigate(from, { replace: true })
                       toast.success('Successfuly Create User', {
                         position: 'top-center',
                         draggable: true,
                         autoClose: 200,
                       })
+                      setLoading(false)
                     }
                   })
                   .catch((err) => {
+                    navigate('/registration')
                     toast.error('Can not Create User', {
                       position: 'top-center',
                       draggable: true,
                       autoClose: 200,
                     })
+                    setLoading(false)
                   })
               } else {
                 const data_for_update = {
@@ -68,16 +76,20 @@ function SigninWith() {
                 })
                   .then((r) => r.json())
                   .then((res) => {
-                    console.log(res)
                     if (res.acknowledged) {
+                      navigate(from, { replace: true })
                       toast.success('Successfuly Login Google User', {
                         position: 'top-center',
                         draggable: true,
                         autoClose: 200,
                       })
+                      setLoading(false)
                     }
                   })
-                  .catch((er) => console.log(er))
+                  .catch((er) => {
+                    navigate('/registration')
+                    setLoading(false)
+                  })
               }
             })
             .catch((er) => console.log(er))

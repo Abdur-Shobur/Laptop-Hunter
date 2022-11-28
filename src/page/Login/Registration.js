@@ -1,14 +1,17 @@
 import React, { useContext, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import login_bg from '../../media/img/login-bg.svg'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import LoginImg from './LoginImg'
 import SigninWith from './SigninWith'
 import { UserSystem } from '../../context/FirebaseContext'
 import { toast } from 'react-toastify'
 
 function Registration() {
+  const location = useLocation()
   const navigate = useNavigate()
+  const from = location?.state?.from?.pathname || '/'
+
   const [userRole, setUserRole] = useState('user')
   const { create_user_email_and_password, setLoading } = useContext(UserSystem)
   const { register, handleSubmit } = useForm()
@@ -40,6 +43,7 @@ function Registration() {
                 draggable: true,
                 autoClose: 200,
               })
+              navigate(from, { replace: true })
             }
           })
           .catch((err) => {

@@ -22,6 +22,7 @@ import YourLaptop from '../page/SellerDashboard/YourLaptop'
 import ShopPage from '../page/shopPage/ShopPage'
 import User from '../page/UserDashbord/User'
 import AdminPrivetRoute from './AdminPrivetRoute'
+import LoginRegPrivetForUser from './LoginRegPrivetForUser'
 import OnlyUserPrivetRoute from './OnlyUserPrivetRoute'
 import SellerPrivetRoute from './SellerPrivetRoute'
 import UserPrivateRoutes from './UserPrivateRoutes'
@@ -37,7 +38,11 @@ const routes = createBrowserRouter([
       },
       {
         path: '/login',
-        element: <Login />,
+        element: (
+          <LoginRegPrivetForUser>
+            <Login />
+          </LoginRegPrivetForUser>
+        ),
       },
       {
         path: '/blog',
@@ -45,7 +50,11 @@ const routes = createBrowserRouter([
       },
       {
         path: '/registration',
-        element: <Registration />,
+        element: (
+          <LoginRegPrivetForUser>
+            <Registration />,
+          </LoginRegPrivetForUser>
+        ),
       },
       {
         path: '/profile',
@@ -81,7 +90,6 @@ const routes = createBrowserRouter([
     path: '/admin-dashboard',
     element: (
       <AdminPrivetRoute>
-        {' '}
         <AdminLayout />
       </AdminPrivetRoute>
     ),
