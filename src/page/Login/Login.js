@@ -18,7 +18,9 @@ function Login() {
   const onSubmit = (data) => {
     const email = data.email
     const password = data.password
-    fetch(`http://localhost:5000/user-get-by-email/v1?email=${email}`)
+    fetch(
+      `https://laptop-hunter.vercel.app/user-get-by-email/v1?email=${email}`,
+    )
       .then((r) => r.json())
       .then((res) => {
         if (email === res.email) {

@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function LoadCategory() {
   const data_fetch = () => {
-    return axios.get('http://localhost:5000/product-category')
+    return axios.get('https://laptop-hunter.vercel.app/product-category')
   }
   const { data, isLoading, refetch } = useQuery(
     ['product-category'],

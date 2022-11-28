@@ -7,7 +7,7 @@ function GetCurrentUserByLoginEmail() {
   const { user } = useContext(UserSystem)
   const load_data = () => {
     return axios.get(
-      `http://localhost:5000/user-get-by-email/v1?email=${user?.email}`,
+      `https://laptop-hunter.vercel.app/user-get-by-email/v1?email=${user?.email}`,
     )
   }
   const { data, isLoading, refetch } = useQuery(

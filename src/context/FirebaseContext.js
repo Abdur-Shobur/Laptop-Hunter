@@ -40,30 +40,18 @@ function FirebaseContext({ children }) {
     return signOut(auth)
   }
 
-  // useEffect(() => {
-  //   if (user.email) {
-  //     const unsub = fetch(
-  //       `http://localhost:5000/user-get-by-email/v1?email=${user?.email}`,
-  //     )
-  //       .then((r) => r.json())
-  //       .then((data) => {
-  //         set_db_user(data)
-  //         setLoading(false)
-  //       })
-  //       .catch((er) => console.log(er))
-  //   }
-  // }, [user.email])
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (u) => {
       setUser(u)
-      // console.log(u)
+
       if (u) {
-        fetch(`http://localhost:5000/user-get-by-email/v1?email=${u?.email}`)
+        fetch(
+          `https://laptop-hunter.vercel.app/user-get-by-email/v1?email=${u.email}`,
+        )
           .then((r) => r.json())
           .then((data) => {
             set_db_user(data)
-            // console.log(u)
+
             setLoading(false)
           })
           .catch((er) => {

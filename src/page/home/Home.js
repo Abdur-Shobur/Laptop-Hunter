@@ -5,6 +5,7 @@ import AllCategoyProduct from './AllCategoyProduct'
 import PromotionLaptops from './PromotionLaptops'
 import Testemonial from './Testemonial'
 import './home.css'
+import HeroSection from './HeroSection'
 
 function Home() {
   const { promote_laptops, isLoading } = PromotionProductLoad()
@@ -14,6 +15,7 @@ function Home() {
       <Helmet>
         <title>Laptop Hunter</title>
       </Helmet>
+      <HeroSection />
       <div className="flex justify-center">
         {isLoading && <FadeLoader color="#36d7b7" />}
       </div>

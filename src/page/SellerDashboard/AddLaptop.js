@@ -44,7 +44,7 @@ function AddLaptop() {
             product_added_time: milliseconds,
             reported_item: false,
           }
-          fetch(`http://localhost:5000/laptops`, {
+          fetch(`https://laptop-hunter.vercel.app/laptops`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',

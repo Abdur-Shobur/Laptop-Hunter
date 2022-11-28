@@ -23,7 +23,7 @@ function AddCategoryModal({ modalOpen, setToClose, refetch }) {
             category_img: result.data.url,
           }
 
-          fetch(`http://localhost:5000/product-category`, {
+          fetch(`https://laptop-hunter.vercel.app/product-category`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(category_data),
@@ -43,7 +43,6 @@ function AddCategoryModal({ modalOpen, setToClose, refetch }) {
         }
       })
     e.target.reset()
-    
   }
   return (
     <div>

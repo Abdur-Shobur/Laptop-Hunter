@@ -14,15 +14,19 @@ function Registration() {
   const from = location?.state?.from?.pathname || '/'
 
   const [userRole, setUserRole] = useState('user')
-  const { create_user_email_and_password, setLoading } = useContext(UserSystem)
+  const {
+    create_user_email_and_password,
+    setLoading,
+    db_user,
+    set_db_user,
+  } = useContext(UserSystem)
   const { register, handleSubmit } = useForm()
   const onSubmit = (data) => {
     const email = data.email
     const password = data.password
-
+    setLoading(true)
     create_user_email_and_password(email, password)
       .then((user) => {
-        setLoading(false)
         const userdata = {
           name: data.name,
           email,
@@ -31,7 +35,7 @@ function Registration() {
           user_img: '',
           user_verified: false,
         }
-        fetch('http://localhost:5000/users', {
+        fetch('https://laptop-hunter.vercel.app/users', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(userdata),
@@ -44,6 +48,8 @@ function Registration() {
                 draggable: true,
                 autoClose: 200,
               })
+
+              setLoading(false)
               navigate(from, { replace: true })
             }
           })
@@ -54,13 +60,13 @@ function Registration() {
               autoClose: 200,
             })
           })
-        navigate('/')
       })
       .catch((err) => {
         setLoading(false)
         navigate('/registration')
       })
   }
+
   return (
     <div style={{ backgroundImage: `url(${login_bg})` }}>
       <Helmet>

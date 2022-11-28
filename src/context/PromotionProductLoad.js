@@ -3,7 +3,9 @@ import axios from 'axios'
 
 function PromotionProductLoad() {
   const data_fetch = () => {
-    return axios.get('http://localhost:5000/laptops/promotion-product/v1')
+    return axios.get(
+      'https://laptop-hunter.vercel.app/laptops/promotion-product/v1',
+    )
   }
   const { data, isLoading, refetch } = useQuery(['promote_laptops'], data_fetch)
 

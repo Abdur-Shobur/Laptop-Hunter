@@ -11,13 +11,13 @@ function Categorycard({ category, refetch }) {
   const { _id, category_name, category_img } = category
 
   useEffect(() => {
-    fetch(`http://localhost:5000/laptops/count?id=${_id}`)
+    fetch(`https://laptop-hunter.vercel.app/laptops/count?id=${_id}`)
       .then((data) => data.json())
       .then((result) => set_count_porudct(result))
   }, [_id])
 
   const seleted_hendaler = (e) => {
-    const url = `http://localhost:5000/product-category/${e}`
+    const url = `https://laptop-hunter.vercel.app/product-category/${e}`
     return swal({
       title: 'Are you sure?',
       text:

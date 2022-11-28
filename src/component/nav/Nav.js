@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import logoWhite from '../../media/img/laptop-hunter-logo white.png'
 import logoDark from '../../media/img/laptop-hunter-logo-dark.png'
 import logoBlue from '../../media/img/laptop-hunter-blue.png'
@@ -8,6 +8,7 @@ import Login from '../../page/Login/Login'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 
 function Nav() {
+  const [getUser, setgetUser] = useState(null)
   const location = useLocation()
   const pathName = location.pathname
   const { user, db_user } = useContext(UserSystem)
@@ -17,6 +18,12 @@ function Nav() {
     fontWeight: 'bold',
     color: '#2563eb',
   }
+
+  useEffect(() => {
+    if (db_user) {
+      setgetUser(db_user)
+    }
+  }, [db_user])
 
   const nav_menu = (
     <>

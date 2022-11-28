@@ -15,7 +15,7 @@ function ReportedTable() {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/reported-laptop/v1?id=${e}`, {
+        fetch(`https://laptop-hunter.vercel.app/reported-laptop/v1?id=${e}`, {
           method: 'DELETE',
         })
           .then((r) => r.json())

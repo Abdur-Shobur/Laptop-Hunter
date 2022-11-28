@@ -19,21 +19,21 @@ function Testemonial() {
     },
     {
       id: 2,
-      title: 'Best Service Proveder',
+      title: 'Get Best Laptop From ',
       details:
-        'One of best marketplace for selling and buying products. Any one can easily find product and selling also buying porduct. This market will be one of the biggest marketplace in the world ',
+        'This marketplace is finding for best laptop, Sell and buying also thats the place for finding for awesome laptops and seller is good for, you have to welcome to get your best laptop for needed',
       img: testimoninal_2,
-      name: 'Mr Rock',
-      position: 'Seller',
+      name: 'Mr Jhone',
+      position: 'Buyer',
     },
     {
       id: 3,
-      title: 'Best Service Proveder',
+      title: 'Good Marketplace',
       details:
-        'One of best marketplace for selling and buying products. Any one can easily find product and selling also buying porduct. This market will be one of the biggest marketplace in the world ',
+        ' This market will be one of the biggest marketplace in the world, any one can find his best laptops ',
       img: testimoninal_3,
-      name: 'Mr Rock',
-      position: 'Seller',
+      name: 'Rased Karim',
+      position: 'User',
     },
   ]
   return (

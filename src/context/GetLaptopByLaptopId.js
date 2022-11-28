@@ -3,7 +3,9 @@ import axios from 'axios'
 
 function GetLaptopByLaptopId(id) {
   const data_fetch = () => {
-    return axios.get(`http://localhost:5000/laptops-get-by-id/v1?id=${id}`)
+    return axios.get(
+      `https://laptop-hunter.vercel.app/laptops-get-by-id/v1?id=${id}`,
+    )
   }
   const { data, isLoading, refetch } = useQuery(
     ['GetLaptopByLaptopId', id],

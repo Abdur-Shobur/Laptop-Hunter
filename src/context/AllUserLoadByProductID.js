@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function AllUserLoadByProductID(id) {
   const AllUserLoadByProductIds = () => {
-    return axios.get(`http://localhost:5000/users-get?userid=${id}`)
+    return axios.get(`https://laptop-hunter.vercel.app/users-get?userid=${id}`)
   }
   const { data, isLoading, refetch } = useQuery(
     ['AllUserLoadByProductID', id],

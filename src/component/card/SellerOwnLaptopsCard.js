@@ -31,7 +31,6 @@ function SellerOwnLaptopsCard({ laptops, refetch, i }) {
         delete_func(e)
           .then((r) => r.json())
           .then((res) => {
-            console.log(res, 'ers-24')
             refetch()
             if (res.deletedCount > 0) {
               toast.success('Delete Success!', {
@@ -60,7 +59,7 @@ function SellerOwnLaptopsCard({ laptops, refetch, i }) {
           laptop_id: e,
         }
         fetch(
-          `http://localhost:5000/laptops/promotion-product/v1?laptop_id=${e}`,
+          `https://laptop-hunter.vercel.app/laptops/promotion-product/v1?laptop_id=${e}`,
           {
             method: 'PUT',
             headers: {

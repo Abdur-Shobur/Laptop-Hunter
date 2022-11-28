@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function AllUsers() {
   const data_fetch = () => {
-    return axios.get('http://localhost:5000/users')
+    return axios.get('https://laptop-hunter.vercel.app/users')
   }
   const { data, isLoading, refetch } = useQuery(['users'], data_fetch)
   const user_db = data?.data

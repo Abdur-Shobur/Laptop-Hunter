@@ -26,7 +26,7 @@ function UserEditModal({ users_data, refetch }) {
             email,
             user_img: result.data.url,
           }
-          fetch(`http://localhost:5000/users`, {
+          fetch(`https://laptop-hunter.vercel.app/users`, {
             method: 'PUT',
             headers: {
               'Content-type': 'application/json',

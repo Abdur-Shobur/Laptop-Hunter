@@ -13,8 +13,6 @@ function SigninWith() {
   const google_sign_in_handeler = () => {
     sign_in_google_pop_up()
       .then((user) => {
-        console.log(user.user)
-
         if (user.user.uid) {
           const userdata = {
             name: user.user.displayName,
@@ -28,13 +26,13 @@ function SigninWith() {
 
           // get user form db
           fetch(
-            `http://localhost:5000/user-get-by-google-id/v1?uid=${user.user.uid}`,
+            `https://laptop-hunter.vercel.app/user-get-by-google-id/v1?uid=${user.user.uid}`,
           )
             .then((r) => r.json())
             .then((res) => {
               // if user didnot in data base
               if (res.uid_get !== user.user.uid) {
-                fetch('http://localhost:5000/users', {
+                fetch('https://laptop-hunter.vercel.app/users', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
                   body: JSON.stringify(userdata),
@@ -67,7 +65,7 @@ function SigninWith() {
                   user_img: user.user.photoURL,
                 }
                 // if user already have databse just update data
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://laptop-hunter.vercel.app/users`, {
                   method: 'PUT',
                   headers: {
                     'Content-Type': 'application/json',

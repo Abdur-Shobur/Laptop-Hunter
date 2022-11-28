@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function AllLaptopsLoad() {
   const load_all_laptop = () => {
-    return axios.get(`http://localhost:5000/laptops`)
+    return axios.get(`https://laptop-hunter.vercel.app/laptops`)
   }
   const { data, isLoading, refetch } = useQuery(
     ['load_all_laptops'],

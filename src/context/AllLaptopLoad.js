@@ -3,7 +3,9 @@ import axios from 'axios'
 
 function AllLaptopLoad(e) {
   const data_fetch = () => {
-    return axios.get(`http://localhost:5000/laptops/email?email=${e}`)
+    return axios.get(
+      `https://laptop-hunter.vercel.app/laptops/email?email=${e}`,
+    )
   }
   const { data, isLoading, refetch } = useQuery(
     ['laptops-category', e],

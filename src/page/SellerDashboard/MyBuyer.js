@@ -19,7 +19,7 @@ function MyBuyer() {
   useEffect(() => {
     if (current_db_user_id) {
       fetch(
-        `http://localhost:5000/booked-laptop-get-by-seller-id/v1?seller_id=${current_db_user_id}`,
+        `https://laptop-hunter.vercel.app/booked-laptop-get-by-seller-id/v1?seller_id=${current_db_user_id}`,
       )
         .then((r) => r.json())
         .then((res) => set_booked_porduct(res))

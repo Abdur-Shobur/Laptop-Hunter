@@ -77,7 +77,7 @@ const routes = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/product-category-by-id/v1/${params._id}`,
+            `https://laptop-hunter.vercel.app/product-category-by-id/v1/${params._id}`,
           ),
       },
       {

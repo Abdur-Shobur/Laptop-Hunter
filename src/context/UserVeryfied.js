@@ -7,7 +7,7 @@ function UserVeryfied(e) {
   }
 
   const UserVeryfied_byid = () => {
-    return axios.put(`http://localhost:5000/users/veryfy`, {
+    return axios.put(`https://laptop-hunter.vercel.app/users/veryfy`, {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json',

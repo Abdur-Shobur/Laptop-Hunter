@@ -13,7 +13,7 @@ function CardOne({ testimonial }) {
         {id}. {title}
       </h1>
       <p className="text-black mt-3 text-center w-[90%] lg:w-[100%]">
-        {details}
+        {details.slice(0, 100)}...
       </p>
       <img src={img} className="rounded-full mt-4" alt="" />
       <div className="flex flex-col -ml-[352px] mt-72 absolute hidden xl:block">

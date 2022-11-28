@@ -3,7 +3,7 @@ import axios from 'axios'
 
 function GetReportedItems() {
   const load_reported_laptop = () => {
-    return axios.get(`http://localhost:5000/reported-laptop/v1`)
+    return axios.get(`https://laptop-hunter.vercel.app/reported-laptop/v1`)
   }
   const { data, isLoading, refetch } = useQuery(
     ['GetReportedItems'],

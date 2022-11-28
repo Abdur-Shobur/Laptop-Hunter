@@ -4,7 +4,7 @@ import axios from 'axios'
 function BookedProductLoadByUserEmail(e) {
   const data_fetch = () => {
     return axios.get(
-      `http://localhost:5000/booked-laptop-get-by-user-email/v1?email=${e}`,
+      `https://laptop-hunter.vercel.app/booked-laptop-get-by-user-email/v1?email=${e}`,
     )
   }
   const { data, isLoading, refetch } = useQuery(

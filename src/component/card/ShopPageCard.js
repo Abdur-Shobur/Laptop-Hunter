@@ -22,7 +22,7 @@ function ShopPageCard({ laptop, book_handeler }) {
   const seller_info = all_users?.[0]
   const report_to_admin = async (e) => {
     await fetch(
-      `http://localhost:5000/get-reported-laptop-by-id/v1?id=${e._id}`,
+      `https://laptop-hunter.vercel.app/get-reported-laptop-by-id/v1?id=${e._id}`,
     )
       .then((r) => r.json())
       .then((data) => {
@@ -33,7 +33,7 @@ function ShopPageCard({ laptop, book_handeler }) {
       .catch((er) => console.log(er))
 
     if (reported_id.length <= 0) {
-      fetch(`http://localhost:5000/reported-laptop/v1`, {
+      fetch(`https://laptop-hunter.vercel.app/reported-laptop/v1`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

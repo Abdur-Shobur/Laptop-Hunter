@@ -9,7 +9,7 @@ function ProductDetails() {
   const loader = useLoaderData()
 
   useEffect(() => {
-    fetch(`http://localhost:5000/laptops/count?id=${loader._id}`)
+    fetch(`https://laptop-hunter.vercel.app/laptops/count?id=${loader._id}`)
       .then((data) => data.json())
       .then((result) => setProducts(result))
   }, [loader._id])
@@ -17,7 +17,7 @@ function ProductDetails() {
   const book_handeler = (e) => {
     set_product(e)
   }
-  console.log()
+ 
   return (
     <div>
       <div className="my-4 container mx-auto">

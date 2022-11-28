@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { UserSystem } from '../../context/FirebaseContext'
 
@@ -8,7 +9,9 @@ function BookedNowModal({ porduct }) {
   const { user } = useContext(UserSystem)
   useEffect(() => {
     if (porduct.user_db_id) {
-      fetch(`http://localhost:5000/users-get?userid=${porduct?.user_db_id}`)
+      fetch(
+        `https://laptop-hunter.vercel.app/users-get?userid=${porduct?.user_db_id}`,
+      )
         .then((res) => res.json())
         .then((data) => set_seller(data[0]))
         .catch((er) => console.log(er))
@@ -17,7 +20,9 @@ function BookedNowModal({ porduct }) {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/user-get-by-email/v1?email=${user?.email}`)
+      fetch(
+        `https://laptop-hunter.vercel.app/user-get-by-email/v1?email=${user?.email}`,
+      )
         .then((r) => r.json())
         .then((data) => db_set_user(data))
         .catch((er) => console.log(er))
@@ -45,7 +50,7 @@ function BookedNowModal({ porduct }) {
       purchase: false,
     }
 
-    fetch('http://localhost:5000/booked-laptop/v1', {
+    fetch('https://laptop-hunter.vercel.app/booked-laptop/v1', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -132,23 +137,27 @@ function BookedNowModal({ porduct }) {
             </div>
           </div>
           {/* user info  */}
-          <div className="border-b border-gray-300 py-1">
-            <p className="uppercase tracking-wide text-sm font-bold text-slate-700">
-              About You
-            </p>
-            <div className="flex justify-between mt-1">
-              <div className="flex-1">
-                <p className="text-sm text-gray-900 font-semibold">Your Name</p>
-                <p className="text-sm text-blue-700">{db_user_name}</p>
-              </div>
-              <div className="flex-1">
-                <p className="text-sm text-gray-900 font-semibold">
-                  Your Email
-                </p>
-                <p className="text-sm text-blue-700">{db_user_email}</p>
+          {db_user_email && (
+            <div className="border-b border-gray-300 py-1">
+              <p className="uppercase tracking-wide text-sm font-bold text-slate-700">
+                About You
+              </p>
+              <div className="flex justify-between mt-1">
+                <div className="flex-1">
+                  <p className="text-sm text-gray-900 font-semibold">
+                    Your Name
+                  </p>
+                  <p className="text-sm text-blue-700">{db_user_name}</p>
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm text-gray-900 font-semibold">
+                    Your Email
+                  </p>
+                  <p className="text-sm text-blue-700">{db_user_email}</p>
+                </div>
               </div>
             </div>
-          </div>
+          )}
           {/* form  */}
           <form onSubmit={modal_submit}>
             <div className="mt-4">
@@ -175,13 +184,22 @@ function BookedNowModal({ porduct }) {
                 className="input input-bordered w-full mt-2"
               />
             </div>
-
-            <button
-              type="submit"
-              className="btn btn-info text-white w-full my-4"
-            >
-              Add to Booking
-            </button>
+            {db_user_email ? (
+              <button
+                type="submit"
+                className="btn btn-info text-white w-full my-4"
+              >
+                Add to Booking
+              </button>
+            ) : (
+              <Link
+                to="/login"
+                type="submit"
+                className="btn btn-info text-white w-full my-4"
+              >
+                Login Please!
+              </Link>
+            )}
           </form>
         </div>
       </div>

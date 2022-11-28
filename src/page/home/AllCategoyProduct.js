@@ -6,6 +6,7 @@ import LoadCategory from '../../context/LoadCategory'
 import proudcts_bg from '../../media/img/proudcts-bg.svg'
 function AllCategoyProduct() {
   const { category, data, isLoading, refetch } = LoadCategory()
+
   return (
     <section
       className="text-gray-600 body-font"

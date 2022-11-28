@@ -15,7 +15,7 @@ function UserCard({ users, sr }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/users/veryfy`, {
+        fetch(`https://laptop-hunter.vercel.app/users/veryfy`, {
           method: 'PUT',
           headers: {
             'Content-type': 'application/json',
@@ -48,7 +48,7 @@ function UserCard({ users, sr }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/users?id=${e}`, {
+        fetch(`https://laptop-hunter.vercel.app/users?id=${e}`, {
           method: 'DELETE',
         })
           .then((r) => r.json())

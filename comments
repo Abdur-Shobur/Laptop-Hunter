@@ -5,7 +5,7 @@
 //       promotion_product: true,
 //       laptop_id: e,
 //     }
-//     fetch(`http://localhost:5000/laptops/promotion-product/v1?laptop_id=${e}`, {
+//     fetch(`https://laptop-hunter.vercel.app/laptops/promotion-product/v1?laptop_id=${e}`, {
 //       method: 'PUT',
 //       headers: {
 //         'Content-type': 'application/json',
@@ -16,7 +16,7 @@
 //       .then((r) => {
 //         refetch().then((nex) => {
 //           if (r.acknowledged) {
-//             fetch(`http://localhost:5000/promote-laptops/v1`, {
+//             fetch(`https://laptop-hunter.vercel.app/promote-laptops/v1`, {
 //               method: 'POST',
 //               headers: {
 //                 'Content-Type': 'application/json',

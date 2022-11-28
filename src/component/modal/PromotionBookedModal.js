@@ -9,7 +9,9 @@ function PromotionBookedModal({ porduct }) {
 
   useEffect(() => {
     if (porduct?.user_db_id) {
-      fetch(`http://localhost:5000/users-get?userid=${porduct?.user_db_id}`)
+      fetch(
+        `https://laptop-hunter.vercel.app/users-get?userid=${porduct?.user_db_id}`,
+      )
         .then((res) => res.json())
         .then((data) => set_seller(data[0]))
         .catch((er) => console.log(er))
@@ -18,7 +20,9 @@ function PromotionBookedModal({ porduct }) {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/user-get-by-email/v1?email=${user?.email}`)
+      fetch(
+        `https://laptop-hunter.vercel.app/user-get-by-email/v1?email=${user?.email}`,
+      )
         .then((r) => r.json())
         .then((data) => db_set_user(data))
         .catch((er) => console.log(er))
@@ -46,7 +50,7 @@ function PromotionBookedModal({ porduct }) {
       purchase: false,
     }
 
-    fetch('http://localhost:5000/booked-laptop/v1', {
+    fetch('https://laptop-hunter.vercel.app/booked-laptop/v1', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
