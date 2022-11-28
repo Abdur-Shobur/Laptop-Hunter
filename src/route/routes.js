@@ -14,6 +14,7 @@ import Home from '../page/home/Home'
 import Login from '../page/Login/Login'
 import Registration from '../page/Login/Registration'
 import NotFound from '../page/notFound/NotFound'
+import ProductDetails from '../page/ProductDetails/ProductDetails'
 import AddLaptop from '../page/SellerDashboard/AddLaptop'
 import MyBuyer from '../page/SellerDashboard/MyBuyer'
 import YourLaptop from '../page/SellerDashboard/YourLaptop'
@@ -44,6 +45,14 @@ const routes = createBrowserRouter([
       {
         path: '/shop',
         element: <ShopPage />,
+      },
+      {
+        path: '/shop/category-details/:_id',
+        element: <ProductDetails />,
+        loader: ({ params }) =>
+          fetch(
+            `http://localhost:5000/product-category-by-id/v1/${params._id}`,
+          ),
       },
       {
         path: '*',

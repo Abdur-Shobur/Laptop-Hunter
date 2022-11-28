@@ -98,12 +98,14 @@ function UserCard({ users, sr }) {
       </td>
       <td className="px-4 py-3 text-lg text-gray-900">{users.email}</td>
       <td className="px-4 py-3 text-lg text-gray-900">
-        <button
-          onClick={() => handel_delete(users._id)}
-          className="btn btn-sm btn-error text-white"
-        >
-          DEL
-        </button>
+        <div className="tooltip" data-tip={`Delete ${users.userRole}`}>
+          <button
+            onClick={() => handel_delete(users._id)}
+            className="btn btn-sm btn-error text-white"
+          >
+            DEL
+          </button>
+        </div>
         {!users.user_verified && (
           <button
             onClick={() => hendel_veryfied(users._id)}

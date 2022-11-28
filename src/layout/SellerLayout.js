@@ -7,6 +7,7 @@ function SellerLayout() {
   return (
     <>
       <Nav />
+
       <SellerDashboard />
       <Footer />
     </>

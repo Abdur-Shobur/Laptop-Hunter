@@ -78,7 +78,14 @@ function AllLaotopTable() {
                       <LoadUserbyProductidTable user_db_id={e.user_db_id} />
                     </td>
                     <td className="px-4 py-3">
-                      {new Date(e.product_added_time).toLocaleDateString()}
+                      <div
+                        className="tooltip"
+                        data-tip={new Date(
+                          e.product_added_time,
+                        ).toLocaleTimeString()}
+                      >
+                        {new Date(e.product_added_time).toLocaleDateString()}
+                      </div>
                     </td>
                     <td className="px-4 py-3">
                       <div className="flex gap-1 ">

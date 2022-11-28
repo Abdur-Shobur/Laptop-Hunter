@@ -11,7 +11,7 @@ function AllCategoyProduct() {
       className="text-gray-600 body-font"
       style={{ backgroundImage: `url(${proudcts_bg})` }}
     >
-      <div className="container px-5 py-24 mx-auto">
+      <div className="container px-5 pb-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
           <HeaderOne>Our All brands</HeaderOne>
           <Pragarphone>We Are selling this products</Pragarphone>
@@ -19,7 +19,7 @@ function AllCategoyProduct() {
         <div className="flex justify-center">
           {isLoading && <PuffLoader color="#105bdb" />}
         </div>
-        <div className="flex flex-wrap -m-2">
+        <div className="grid grid-cols-5">
           {category?.map((e) => (
             <Categorycard key={e._id} category={e} />
           ))}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { MdDeleteForever } from 'react-icons/md'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import swal from 'sweetalert'
 import './Card.css'
@@ -44,33 +44,30 @@ function Categorycard({ category, refetch }) {
   }
 
   return (
-    <>
-      <div className="p-2 lg:w-1/3 md:w-1/2 w-full cursor-pointer relative  category_hide">
-        {location.pathname === '/admin-dashboard/all-category' && (
-          <div className=" absolute right-2">
-            <MdDeleteForever
-              className="text-3xl text-red-500 hover:text-red-600 hidden show_icons_hov"
-              onClick={() => seleted_hendaler(_id)}
-            />
-          </div>
-        )}
-        <div className="h-full flex items-center bg-[#81C6E8] hover:bg-[#4eb9ef] transition-all border-blue-300 shadow-md border p-4 rounded-lg">
-          <img
-            alt="team"
-            className="w-16 h-16 bg-gray-100 object-cover object-center border-2 border-blue-100 flex-shrink-0 rounded-full mr-4"
-            src={category_img}
+    <Link
+      to={`/shop/category-details/${_id}`}
+      className="p-2 w-full cursor-pointer relative  category_hide"
+    >
+      {location.pathname === '/admin-dashboard/all-category' && (
+        <div className=" absolute right-2">
+          <MdDeleteForever
+            className="text-3xl text-red-500 hover:text-red-600 hidden show_icons_hov"
+            onClick={() => seleted_hendaler(_id)}
           />
-          <div className="flex-grow">
-            <h2 className="text-black title-font font-medium">
-              {category_name}
-            </h2>
-            <p className="text-gray-700">
-              Total Products {count_porduct.length}
-            </p>
-          </div>
+        </div>
+      )}
+      <div className="h-full flex items-center bg-[#81C6E8] hover:bg-[#4eb9ef] transition-all border-blue-300 shadow-md border p-4 rounded-lg">
+        <img
+          alt="team"
+          className="w-16 h-16 bg-gray-100 object-cover object-center border-2 border-blue-100 flex-shrink-0 rounded-full mr-4"
+          src={category_img}
+        />
+        <div className="flex-grow">
+          <h2 className="text-black title-font font-medium">{category_name}</h2>
+          <p className="text-gray-700">Total Products {count_porduct.length}</p>
         </div>
       </div>
-    </>
+    </Link>
   )
 }
 

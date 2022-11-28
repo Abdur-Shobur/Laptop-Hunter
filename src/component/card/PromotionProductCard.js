@@ -2,7 +2,7 @@ import React from 'react'
 import { GoUnverified, GoVerified } from 'react-icons/go'
 import AllUserLoadByProductID from '../../context/AllUserLoadByProductID'
 
-function PromotionProductCard({ promote_laptops }) {
+function PromotionProductCard({ promote_laptops, book_handeler }) {
   const {
     _id,
     brand_name,
@@ -18,6 +18,7 @@ function PromotionProductCard({ promote_laptops }) {
     promotion_product,
     user_db_id,
   } = promote_laptops
+
   const { all_users, isLoading, refetch } = AllUserLoadByProductID(user_db_id)
   const user_verified = all_users?.[0]?.user_verified
   return (
@@ -113,13 +114,13 @@ function PromotionProductCard({ promote_laptops }) {
         </div>
         <div className="p-4 flex items-center justify-center text-sm text-gray-600">
           <label
-            htmlFor="add_booking_modal"
+            onClick={() => book_handeler(promote_laptops)}
+            htmlFor="add_booking_modal_pormote"
             className="btn btn-sm w-full btn-accent text-white"
           >
             Booked Now
           </label>
         </div>
-        {/* <>{<BookedNowModal laptop={promote_laptops} all_users={all_users} />}</> */}
       </div>
     </div>
   )

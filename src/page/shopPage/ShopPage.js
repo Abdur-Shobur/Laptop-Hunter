@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
-import { FadeLoader } from 'react-spinners'
+import { FadeLoader, PuffLoader } from 'react-spinners'
+import Categorycard from '../../component/card/Category.card'
 import ShopPageCard from '../../component/card/ShopPageCard'
 import BookedNowModal from '../../component/modal/BookedNowModal'
 import AllLaptopsLoad from '../../context/AllLaptopsLoad'
+import LoadCategory from '../../context/LoadCategory'
 
 function ShopPage() {
-  const { all_laptops, isLoading, refetch } = AllLaptopsLoad()
+  const { all_laptops, isLoading } = AllLaptopsLoad()
   const [porduct, set_product] = useState({})
+  const { category } = LoadCategory()
 
   const book_handeler = (e) => {
     set_product(e)
@@ -23,6 +26,21 @@ function ShopPage() {
           <h2 className="text-gray-800 text-2xl lg:text-3xl font-bold text-center mb-4 md:mb-6">
             Here is all Laptops you can booking any Laptop
           </h2>
+        </div>
+        <div>
+          {' '}
+          <section className="text-gray-600 body-font bg-slate-200 py-2 rounded-lg">
+            <div className="container px-5   mx-auto">
+              <div className="flex justify-center">
+                {isLoading && <PuffLoader color="#105bdb" />}
+              </div>
+              <div className="grid grid-cols-6 gap-1">
+                {category?.map((e) => (
+                  <Categorycard key={e._id} category={e} />
+                ))}
+              </div>
+            </div>
+          </section>
         </div>
         <div className="flex justify-center">
           {isLoading && <FadeLoader color="#36d7b7" />}

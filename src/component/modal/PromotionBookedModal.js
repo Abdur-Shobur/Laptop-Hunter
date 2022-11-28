@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 import { UserSystem } from '../../context/FirebaseContext'
 
-function BookedNowModal({ porduct }) {
+function PromotionBookedModal({ porduct }) {
   const [seller, set_seller] = useState([])
   const [db_user, db_set_user] = useState({})
   const { user } = useContext(UserSystem)
+
   useEffect(() => {
-    if (porduct.user_db_id) {
+    if (porduct?.user_db_id) {
       fetch(`http://localhost:5000/users-get?userid=${porduct?.user_db_id}`)
         .then((res) => res.json())
         .then((data) => set_seller(data[0]))
@@ -68,11 +69,15 @@ function BookedNowModal({ porduct }) {
   }
   return (
     <div>
-      <input type="checkbox" id="add_booking_modal" className="modal-toggle" />
+      <input
+        type="checkbox"
+        id="add_booking_modal_pormote"
+        className="modal-toggle"
+      />
       <div className="modal">
         <div className="modal-box relative">
           <label
-            htmlFor="add_booking_modal"
+            htmlFor="add_booking_modal_pormote"
             className="btn btn-sm btn-circle absolute right-2 top-2"
           >
             ✕
@@ -189,4 +194,4 @@ function BookedNowModal({ porduct }) {
   )
 }
 
-export default BookedNowModal
+export default PromotionBookedModal

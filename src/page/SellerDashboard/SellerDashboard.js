@@ -47,7 +47,7 @@ function SellerDashboard() {
               </div>
             </div>
             <div className="flex flex-col flex-1 w-0 overflow-hidden">
-              <main className="relative flex-1 bg-blue-100 rounded-md ml-4 overflow-y-auto focus:outline-none p-4">
+              <main className="min-h-[60vh] relative flex-1 bg-blue-100 rounded-md ml-4 overflow-y-auto focus:outline-none p-4">
                 <Outlet />
               </main>
             </div>
