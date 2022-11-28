@@ -15,6 +15,7 @@ function FirebaseContext({ children }) {
   const Google_Provider = new GoogleAuthProvider()
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
+  const [db_user, set_db_user] = useState(null)
 
   // create user by emal and password
   const create_user_email_and_password = (email, password) => {
@@ -39,12 +40,46 @@ function FirebaseContext({ children }) {
     return signOut(auth)
   }
 
+  // useEffect(() => {
+  //   if (user.email) {
+  //     const unsub = fetch(
+  //       `http://localhost:5000/user-get-by-email/v1?email=${user?.email}`,
+  //     )
+  //       .then((r) => r.json())
+  //       .then((data) => {
+  //         set_db_user(data)
+  //         setLoading(false)
+  //       })
+  //       .catch((er) => console.log(er))
+  //   }
+  // }, [user.email])
+
   useEffect(() => {
-    onAuthStateChanged(auth, (u) => {
+    const unsubscribe = onAuthStateChanged(auth, (u) => {
       setUser(u)
+      // console.log(u)
+      if (u) {
+        fetch(`http://localhost:5000/user-get-by-email/v1?email=${u?.email}`)
+          .then((r) => r.json())
+          .then((data) => {
+            set_db_user(data)
+            // console.log(u)
+            setLoading(false)
+          })
+          .catch((er) => {
+            setLoading(false)
+          })
+      }
       setLoading(false)
     })
+    return () => {
+      //this part will execute once the component is unmounted.
+      unsubscribe()
+    }
   }, [])
+
+  // get current user from db by email
+
   const value = {
     user,
     create_user_email_and_password,
@@ -52,6 +87,7 @@ function FirebaseContext({ children }) {
     setLoading,
     signin_user_email_and_password,
     sign_in_google_pop_up,
+    db_user,
     log_out,
   }
   return <UserSystem.Provider value={value}>{children}</UserSystem.Provider>

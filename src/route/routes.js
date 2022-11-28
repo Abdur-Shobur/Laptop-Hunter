@@ -8,6 +8,7 @@ import AllLaptops from '../page/AdminDashbord/AllLaptops'
 import AllSellers from '../page/AdminDashbord/AllSellers'
 import AllUsers from '../page/AdminDashbord/AllUsers'
 import RepotedItems from '../page/AdminDashbord/RepotedItems'
+import BlogPage from '../page/BlogPage/BlogPage'
 import MyOrders from '../page/BuyerDashboard/MyOrders'
 import MyWishList from '../page/BuyerDashboard/MyWishList'
 import Home from '../page/home/Home'
@@ -20,6 +21,10 @@ import MyBuyer from '../page/SellerDashboard/MyBuyer'
 import YourLaptop from '../page/SellerDashboard/YourLaptop'
 import ShopPage from '../page/shopPage/ShopPage'
 import User from '../page/UserDashbord/User'
+import AdminPrivetRoute from './AdminPrivetRoute'
+import OnlyUserPrivetRoute from './OnlyUserPrivetRoute'
+import SellerPrivetRoute from './SellerPrivetRoute'
+import UserPrivateRoutes from './UserPrivateRoutes'
 
 const routes = createBrowserRouter([
   {
@@ -35,12 +40,20 @@ const routes = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: '/blog',
+        element: <BlogPage />,
+      },
+      {
         path: '/registration',
         element: <Registration />,
       },
       {
         path: '/profile',
-        element: <User />,
+        element: (
+          <UserPrivateRoutes>
+            <User />
+          </UserPrivateRoutes>
+        ),
       },
       {
         path: '/shop',
@@ -48,7 +61,11 @@ const routes = createBrowserRouter([
       },
       {
         path: '/shop/category-details/:_id',
-        element: <ProductDetails />,
+        element: (
+          <UserPrivateRoutes>
+            <ProductDetails />
+          </UserPrivateRoutes>
+        ),
         loader: ({ params }) =>
           fetch(
             `http://localhost:5000/product-category-by-id/v1/${params._id}`,
@@ -62,7 +79,12 @@ const routes = createBrowserRouter([
   },
   {
     path: '/admin-dashboard',
-    element: <AdminLayout />,
+    element: (
+      <AdminPrivetRoute>
+        {' '}
+        <AdminLayout />
+      </AdminPrivetRoute>
+    ),
     children: [
       {
         path: 'all-category',
@@ -88,7 +110,11 @@ const routes = createBrowserRouter([
   },
   {
     path: '/seller-dahboard',
-    element: <SellerLayout />,
+    element: (
+      <SellerPrivetRoute>
+        <SellerLayout />
+      </SellerPrivetRoute>
+    ),
     children: [
       {
         path: 'your-laptops',
@@ -106,7 +132,11 @@ const routes = createBrowserRouter([
   },
   {
     path: '/buyer-dashboard',
-    element: <BuyerLayout />,
+    element: (
+      <OnlyUserPrivetRoute>
+        <BuyerLayout />
+      </OnlyUserPrivetRoute>
+    ),
     children: [
       {
         path: 'my-orders',

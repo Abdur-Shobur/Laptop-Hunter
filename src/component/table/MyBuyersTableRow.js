@@ -18,11 +18,11 @@ function MyBuyersTableRow({ booked_porduct, i }) {
       set_booking_set_user(all_users[0])
     }
   }, [booking_user, all_users])
-
+  // console.log(booking_get_user, 'sda')
   return (
     <tr>
-      <td className="px-4 py-3">{i}</td>
-      <td className="px-4 py-3">{booking_get_user.name}</td>
+      <td className="px-4 py-3">{i + 1}</td>
+      <td className="px-4 py-3">{booking_get_user?.name}</td>
       <td className="px-4 py-3">{booking_user_email}</td>
       <td className="px-4 py-3">{phone_number}</td>
       <td className="px-4 py-3">{metting_location}</td>

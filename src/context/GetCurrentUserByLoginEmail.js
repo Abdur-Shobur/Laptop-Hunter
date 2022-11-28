@@ -13,7 +13,6 @@ function GetCurrentUserByLoginEmail() {
   const { data, isLoading, refetch } = useQuery(
     ['GetCurrentUserByLoginEmail'],
     load_data,
-    { refetchOnWindowFocus: false },
   )
   const current_db_user = data?.data
   return { current_db_user, isLoading, refetch }

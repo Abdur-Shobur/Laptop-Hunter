@@ -11,6 +11,7 @@ function Nav() {
   const location = useLocation()
   const pathName = location.pathname
   const { user } = useContext(UserSystem)
+
   let activeStyle = {
     textDecoration: 'underline',
     fontWeight: 'bold',
@@ -32,19 +33,13 @@ function Nav() {
       >
         Shop
       </NavLink>
+
       <NavLink
         style={({ isActive }) => (isActive ? activeStyle : undefined)}
-        to="/"
+        to="/blog"
         className="m-2 text-xl font-bold"
       >
-        Home
-      </NavLink>
-      <NavLink
-        style={({ isActive }) => (isActive ? activeStyle : undefined)}
-        to="/"
-        className="m-2 text-xl font-bold"
-      >
-        Home
+        Blog
       </NavLink>
       <NavLink
         style={({ isActive }) => (isActive ? activeStyle : undefined)}

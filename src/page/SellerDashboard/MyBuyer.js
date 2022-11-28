@@ -59,7 +59,7 @@ function MyBuyer() {
               </thead>
               <tbody>
                 {booked_porduct.map((e, i) => (
-                  <MyBuyersTableRow booked_porduct={e} i={i} />
+                  <MyBuyersTableRow booked_porduct={e} key={e._id} i={i} />
                 ))}
               </tbody>
             </table>

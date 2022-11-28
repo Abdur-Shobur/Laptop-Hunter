@@ -3,22 +3,92 @@ import { toast } from 'react-toastify'
 import { UserSystem } from '../../context/FirebaseContext'
 
 function SigninWith() {
-  const { sign_in_google_pop_up, loading, setLoading } = useContext(UserSystem)
+  const { user, sign_in_google_pop_up, loading, setLoading } = useContext(
+    UserSystem,
+  )
   const google_sign_in_handeler = () => {
     sign_in_google_pop_up()
       .then((user) => {
-        toast.success('Successfuly Create user', {
-          position: 'top-center',
-          draggable: true,
-          autoClose: 2000,
-        })
+        console.log(user.user)
+
+        if (user.user.uid) {
+          const userdata = {
+            name: user.user.displayName,
+            email: user.user.email,
+            user_img: user.user.photoURL,
+            password: '',
+            userRole: 'user',
+            user_verified: false,
+            uid_get: user.user.uid,
+          }
+
+          // get user form db
+          fetch(
+            `http://localhost:5000/user-get-by-google-id/v1?uid=${user.user.uid}`,
+          )
+            .then((r) => r.json())
+            .then((res) => {
+              // if user didnot in data base
+              if (res.uid_get !== user.user.uid) {
+                fetch('http://localhost:5000/users', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(userdata),
+                })
+                  .then((res) => res.json())
+                  .then((data) => {
+                    if (data.acknowledged) {
+                      toast.success('Successfuly Create User', {
+                        position: 'top-center',
+                        draggable: true,
+                        autoClose: 200,
+                      })
+                    }
+                  })
+                  .catch((err) => {
+                    toast.error('Can not Create User', {
+                      position: 'top-center',
+                      draggable: true,
+                      autoClose: 200,
+                    })
+                  })
+              } else {
+                const data_for_update = {
+                  name: user.user.displayName,
+                  email: user.user.email,
+                  user_img: user.user.photoURL,
+                }
+                // if user already have databse just update data
+                fetch(`http://localhost:5000/users`, {
+                  method: 'PUT',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify(data_for_update),
+                })
+                  .then((r) => r.json())
+                  .then((res) => {
+                    console.log(res)
+                    if (res.acknowledged) {
+                      toast.success('Successfuly Login Google User', {
+                        position: 'top-center',
+                        draggable: true,
+                        autoClose: 200,
+                      })
+                    }
+                  })
+                  .catch((er) => console.log(er))
+              }
+            })
+            .catch((er) => console.log(er))
+        }
       })
       .catch((err) => {
         setLoading(false)
         toast.error('Something is wrong try again', {
           position: 'top-center',
           draggable: true,
-          autoClose: 2000,
+          autoClose: 200,
         })
       })
   }
