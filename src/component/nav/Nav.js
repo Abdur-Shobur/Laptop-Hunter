@@ -53,7 +53,7 @@ function Nav() {
       {db_user?.userRole === 'admin' && (
         <NavLink
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
-          to="/admin-dashboard"
+          to="/admin-dashboard/all-category"
           className="m-2 text-xl font-bold"
         >
           Admin Dashboard

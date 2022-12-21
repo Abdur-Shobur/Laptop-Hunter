@@ -4,9 +4,9 @@ This is a Reaseller Web App
 
 Live Link - https://laptop-hunter-90265.web.app/
 
-github client code -
+github client code -https://github.com/Abdur-Shobur/Laptop-Hunter
 
-github server code -
+github server code -https://github.com/Abdur-Shobur/Laptop-Hunter-Server
 
 ## Fetures Describe
 

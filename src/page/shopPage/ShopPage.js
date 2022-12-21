@@ -50,7 +50,7 @@ function ShopPage() {
           {isLoading && <FadeLoader color="#36d7b7" />}
         </div>
       </div>
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-2">
         {all_laptops?.map((e) => (
           <ShopPageCard key={e._id} laptop={e} book_handeler={book_handeler} />
         ))}

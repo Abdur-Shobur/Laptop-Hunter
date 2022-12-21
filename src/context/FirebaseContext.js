@@ -51,14 +51,13 @@ function FirebaseContext({ children }) {
           .then((r) => r.json())
           .then((data) => {
             set_db_user(data)
-
             setLoading(false)
           })
           .catch((er) => {
             setLoading(false)
           })
       }
-      setLoading(false)
+     setLoading(false)
     })
     return () => {
       //this part will execute once the component is unmounted.
