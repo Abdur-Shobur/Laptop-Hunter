@@ -73,11 +73,39 @@ function Login() {
           <LoginImg />
           <div className="flex flex-col justify-center flex-1 px-4 py-12 overflow-hidden sm:px-6 lg:flex-none lg:px-20 xl:px-24 bg-white shadow-2xl border-blue-300 border-4 rounded-xl">
             <div className="w-full max-w-xl mx-auto lg:w-96">
-              <div>
-                <h2 className="mt-6 text-3xl font-extrabold text-neutral-600">
-                  Log in.
-                </h2>
+              <h1 className="font-bold underline">Test Accounts</h1>
+              <div className="flex flex-wrap gap-5 mt-5">
+                <div>
+                  <h1 className="font-bold">Admin</h1>
+                  <p className="text-sm font-semibold">
+                    Email: <span>admin@gmail.com</span>
+                  </p>
+                  <p className="text-sm font-semibold">
+                    Pass: <span>admin@gmail.com</span>
+                  </p>
+                </div>
+                <div>
+                  <h1 className="font-bold">Seller</h1>
+                  <p className="text-sm font-semibold">
+                    Email: <span>seller@gmail.com</span>
+                  </p>
+                  <p className="text-sm font-semibold">
+                    Pass: <span>seller@gmail.com</span>
+                  </p>
+                </div>
+                <div>
+                  <h1 className="font-bold">User</h1>
+                  <p className="text-sm font-semibold">
+                    Email: <span>user@gmail.com</span>
+                  </p>
+                  <p className="text-sm font-semibold">
+                    Pass: <span>user@gmail.com</span>
+                  </p>
+                </div>
               </div>
+              <h2 className="mt-6 text-3xl font-extrabold text-neutral-600">
+                Log in.
+              </h2>
 
               <div className="mt-8">
                 <div className="mt-6">

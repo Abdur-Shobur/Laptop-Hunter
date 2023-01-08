@@ -187,6 +187,7 @@ function PromotionBookedModal({ porduct }) {
 
             <button
               type="submit"
+              disabled={!user}
               className="btn btn-info text-white w-full my-4"
             >
               Add to Booking

@@ -16,13 +16,13 @@ function Home() {
         <title>Laptop Hunter</title>
       </Helmet>
       <HeroSection />
+      <AllCategoyProduct />
       <div className="flex justify-center">
         {isLoading && <FadeLoader color="#36d7b7" />}
       </div>
       {promote_laptops?.length > 0 && (
         <PromotionLaptops promote_laptops={promote_laptops} />
       )}
-      <AllCategoyProduct />
       <Testemonial />
     </div>
   )
